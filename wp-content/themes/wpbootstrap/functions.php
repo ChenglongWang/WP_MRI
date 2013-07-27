@@ -49,10 +49,24 @@ function username_or_email_login() {
 		document.getElementById('login_error').innerHTML = document.getElementById('login_error').innerHTML.replace( '<?php echo esc_js( __( '用户名' ) ); ?>', '<?php echo esc_js( __( '用户名/邮箱' , 'email-login' ) ); ?>' );
 	</script><?php
 }
+function my_login_redirect( $redirect_to, $request, $user ){
+    //验证用户
+    if( is_array( $user->roles ) ) {
+       //验证超级管理员
+       if( in_array( "administrator", $user->roles)){
+           // 如果的超级管理员则返回后台管理主页
+           return home_url( '/wp-admin/' );
+       } else {
+           //否则跳转以网站首页
+           return home_url();
+       }
+    }
+}
+
 add_action( 'login_form', 'username_or_email_login' );
 add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 add_action( 'after_setup_theme', 'remove_admin_bar');
-
+add_filter("login_redirect", "my_login_redirect", 10, 3);
 
 
 if ( function_exists('register_sidebar') )
