@@ -9,8 +9,12 @@
 
 
 	<!-- Le styles -->
-	<link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
-
+        <?php if(is_home()){ ?>
+        <link href="wp-content/themes/wpbootstrap/style-index.css" rel="stylesheet">
+        <?php }else {?>
+        <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
+        <?php } ?>
+        
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -55,14 +59,14 @@
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
-            </form>
+                  <form name="LoginForm" class="navbar-form pull-right" action="login.php" method="post">
+                    <input class="span2" type="text" name="email" placeholder="Email">
+                    <input class="span2" type="password" name="pw" placeholder="Password"> 
+                    <input type="submit" value="Sign in" class="btn btn-primary" onclick="return emailCheck()">
+                  </form>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-
-    <div class="container">
+      
+ <!--   <div class="container"> -->

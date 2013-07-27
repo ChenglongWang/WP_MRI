@@ -3,7 +3,7 @@
        <!-- Main hero unit for a primary marketing message or call to action -->
       <!--==========轮播===========
             -->
-  <div id="myCarousel" >
+  <div id="myCarousel">
    <div class="container">
 	<div class="row-fluid">
 		<div class="span12">
@@ -110,5 +110,22 @@
       </footer>
 
     </div><!-- /.container -->
+    
+    <script language="javascript">
+        function emailCheck()
+        {
+            var emailStr = document.all.LoginForm.email.value;
+            var emailPat = /^(.+)@(.+)$/;
+            var matchArray = emailStr.match(emailPat);
+            if (matchArray == null)
+            {
+                alert(emailStr + "电子邮件地址错误!")
+                $(".alert").alert('close')
+                return false;
+            }
+            else
+                return true;
+        }
+    </script>
  
 <?php get_footer(); ?>
