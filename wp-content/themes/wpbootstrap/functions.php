@@ -7,7 +7,18 @@ function wpbootstrap_scripts_with_jquery()
 	// For either a plugin or a theme, you can then enqueue the script:
 	wp_enqueue_script( 'custom-script' );
 }
+
+function remove_admin_bar() 
+{
+    //Remove admin bar except administrator.
+    if (!current_user_can('administrator') && !is_admin()) //if you want remove admin bar for all users, please delete this line
+    {
+        show_admin_bar(false);
+    }
+}
 add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
+add_action( 'after_setup_theme', 'remove_admin_bar');
+
 
 
 if ( function_exists('register_sidebar') )
