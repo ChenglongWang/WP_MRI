@@ -102,13 +102,6 @@
       </div>
 
       <!-- /END THE FEATURETTES -->
-
-      <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="http://www.ecnu.edu.cn" target="_blank">ECNU</a></p>
-        <p>&copy; 2013 Company, Inc. &middot; <a href="#">华东师范大学</a> </p>
-      </footer>
-
     </div><!-- /.container -->
     
     <script language="javascript">

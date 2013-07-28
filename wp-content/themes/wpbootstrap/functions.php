@@ -76,4 +76,10 @@ if ( function_exists('register_sidebar') )
 		'before_title' => '<h3>',
 		'after_title' => '</h3>',
 	));
+
+if(function_exists('register_nav_menus')){
+    register_nav_menus( array(
+        'header-menu' => __( 'topnav' )
+    ) );
+}
 ?>

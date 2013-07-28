@@ -43,7 +43,7 @@
             <a class="brand" href="<?php bloginfo('url') ?>"><?php bloginfo('name') ?></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <?php wp_list_pages(array('title_li' => '')); ?>
+              <?php wp_list_pages(array('title_li' => '')); ?> 
             </ul>
               <?php if(!( is_user_logged_in())){?>
                   <form name="LoginForm" class="navbar-form pull-right" action="<?php echo get_option('home'); ?>/wp-login.php" method="post">
