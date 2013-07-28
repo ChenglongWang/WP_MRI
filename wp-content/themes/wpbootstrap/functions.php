@@ -1,4 +1,5 @@
 <?php 
+ include("wp-bootstrap-walker-class.php");
 
 function wpbootstrap_scripts_with_jquery()
 {
@@ -77,7 +78,10 @@ if ( function_exists('register_sidebar') )
 		'after_title' => '</h3>',
 	));
 
-if(function_exists('register_nav_menus')){
+if(function_exists('register_nav_menus'))
+{
+    add_theme_support('nav-menus');
+
     register_nav_menus( array(
         'header-menu' => __( 'topnav' )
     ) );

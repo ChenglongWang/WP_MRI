@@ -41,10 +41,17 @@
             <span class="icon-bar"></span>
           </a>
             <a class="brand" href="<?php bloginfo('url') ?>"><?php bloginfo('name') ?></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <?php wp_list_pages(array('title_li' => '')); ?> 
-            </ul>
+         <div class="nav-collapse collapse">
+ <!--   <ul class="nav">-->
+              <?php 
+             //    wp_list_pages(array('title_li' => '')); 
+                wp_nav_menu( array( 'theme_location' => 'header-menu',
+                    'container_class' => 'nav-collapse collapse',
+                    'menu_class' => 'nav',
+                    'items_wrap' => '<ul class="nav">%3$s</ul>',
+                    'walker' => new Bootstrap_Walker_Nav_Menu()));
+              ?> 
+ <!--        </ul>-->
               <?php if(!( is_user_logged_in())){?>
                   <form name="LoginForm" class="navbar-form pull-right" action="<?php echo get_option('home'); ?>/wp-login.php" method="post">
                     <input class="span2" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" placeholder="Email/Name">
@@ -56,7 +63,7 @@
                   <li><a class="pull-right" href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
                   </a></li>    
               <?php }?>
-          </div><!--/.nav-collapse -->
+         </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
