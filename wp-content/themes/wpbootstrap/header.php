@@ -60,7 +60,7 @@
                <!--     <input type="submit" value="Sign in" class="btn btn-primary"> onclick="return emailCheck()"-->
                   </form>
               <?php }else { ?>
-                  <a href="<?php echo wp_logout_url(urlencode($_SERVER['REQUEST_URI'])); ?>" class="btn btn-primary pull-right hint--error hint--bottom" data-hint="再见咯!">Logout</a>
+                  <a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class="btn btn-primary pull-right hint--error hint--bottom" data-hint="再见咯!">Logout</a>
                   <li><a class="pull-right" href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
                   </a></li>    
               <?php }?>
