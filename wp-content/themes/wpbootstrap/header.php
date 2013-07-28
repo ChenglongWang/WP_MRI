@@ -43,21 +43,7 @@
             <a class="brand" href="<?php bloginfo('url') ?>"><?php bloginfo('name') ?></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
+              <?php wp_list_pages(array('title_li' => '')); ?>
             </ul>
               <?php if(!( is_user_logged_in())){?>
                   <form name="LoginForm" class="navbar-form pull-right" action="<?php echo get_option('home'); ?>/wp-login.php" method="post">
@@ -67,7 +53,7 @@
                   </form>
               <?php }else { ?>
                   <a href="<?php echo wp_logout_url(urlencode($_SERVER['REQUEST_URI'])); ?>" class="btn navbar-form pull-right">Logout</a>
-                  <li><a class="avatar pull-right" href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
+                  <li><a class="pull-right" href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
                   </a></li>    
               <?php }?>
           </div><!--/.nav-collapse -->

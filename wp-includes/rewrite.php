@@ -1022,10 +1022,28 @@ class WP_Rewrite {
 	 *
 	 * @return bool|string False on failure. Tag permalink structure.
 	 */
-	function get_tag_permastruct() {
+
+        function get_tag_permastruct() {
 		return $this->get_extra_permastruct('post_tag');
 	}
-
+ /*
+        function get_tag_permastruct() 
+        {
+            if (isset($this->tag_structure)) {
+                return $this->tag_structure;
+            }
+            if (empty($this->permalink_structure)) {
+                $this->tag_structure = '';
+                return false;
+            }
+            if (empty($this->tag_base))
+                $this->tag_structure = $this->front . 'tag/';
+            else
+                $this->tag_structure = $this->tag_base . '/';
+                $this->tag_structure .= '%tag%';
+                return $this->tag_structure;
+         }
+*/
 	/**
 	 * Retrieve extra permalink structure by name.
 	 *
