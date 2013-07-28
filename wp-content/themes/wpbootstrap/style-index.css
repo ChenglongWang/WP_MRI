@@ -19,6 +19,20 @@
  {
   margin-bottom: 0px;
  }
+ 
+/* layout */
+.navbar a.avatar {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	padding: 0 !important;
+}
+.navbar .avatar img {
+	width: 23px;
+	height: 23px;
+	margin: 8px 0 6px;
+	border: 1px solid #EEE;
+}
  #myCarousel
  {
     margin-top:0px;

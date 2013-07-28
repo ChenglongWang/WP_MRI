@@ -59,14 +59,16 @@
                 </ul>
               </li>
             </ul>
-              <?php if(!(current_user_can('level_0'))){?>
+              <?php if(!( is_user_logged_in())){?>
                   <form name="LoginForm" class="navbar-form pull-right" action="<?php echo get_option('home'); ?>/wp-login.php" method="post">
-                    <input class="span2" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" placeholder="Email">
+                    <input class="span2" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" placeholder="Email/Name">
                     <input class="span2" type="password" name="pwd" id="pwd" placeholder="Password"> 
-                    <input type="submit" value="Sign in" class="btn btn-primary" onclick="return emailCheck()">
+                    <input type="submit" value="Sign in" class="btn btn-primary" <!--onclick="return emailCheck()"-->>
                   </form>
               <?php }else { ?>
                   <a href="<?php echo wp_logout_url(urlencode($_SERVER['REQUEST_URI'])); ?>" class="btn navbar-form pull-right">Logout</a>
+                  <li><a class="avatar pull-right" href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
+                  </a></li>    
               <?php }?>
           </div><!--/.nav-collapse -->
         </div>
