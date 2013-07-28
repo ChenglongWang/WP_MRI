@@ -59,7 +59,9 @@ function my_login_redirect( $redirect_to, $request, $user ){
            return home_url( '/wp-admin/' );
        } else {
            //否则跳转以网站首页
-           return home_url();
+//         return home_url();
+           //否则跳转返回至之前的页面
+           return $_SERVER["HTTP_REFERER"];
        }
     }
 }
