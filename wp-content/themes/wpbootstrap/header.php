@@ -59,9 +59,9 @@
                 </ul>
               </li>
             </ul>
-                  <form name="LoginForm" class="navbar-form pull-right" action="login.php" method="post">
-                    <input class="span2" type="text" name="email" placeholder="Email">
-                    <input class="span2" type="password" name="pw" placeholder="Password"> 
+                  <form name="LoginForm" class="navbar-form pull-right" action="<?php echo get_option('home'); ?>/wp-login.php" method="post">
+                    <input class="span2" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" placeholder="Email">
+                    <input class="span2" type="password" name="pwd" id="pwd" placeholder="Password"> 
                     <input type="submit" value="Sign in" class="btn btn-primary" onclick="return emailCheck()">
                   </form>
           </div><!--/.nav-collapse -->
