@@ -40,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-            <a class="brand" href="<?php bloginfo('url') ?>"><?php bloginfo('name') ?></a>
+            <a class="brand hint--bottom hint--success" data-hint="欢迎来到我们的实验室!" href="<?php bloginfo('url') ?>"><?php bloginfo('name') ?></a>
          <div class="nav-collapse collapse">
  <!--   <ul class="nav">-->
               <?php 
@@ -56,10 +56,11 @@
                   <form name="LoginForm" class="navbar-form pull-right" action="<?php echo get_option('home'); ?>/wp-login.php" method="post">
                     <input class="span2" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" placeholder="Email/Name">
                     <input class="span2" type="password" name="pwd" id="pwd" placeholder="Password"> 
-                    <input type="submit" value="Sign in" class="btn btn-primary" <!--onclick="return emailCheck()"-->>
+                    <button type="submit" class="btn btn-primary hint--bottom hint--info" data-hint="点这里登录哟!">Sign in</button>
+               <!--     <input type="submit" value="Sign in" class="btn btn-primary"> onclick="return emailCheck()"-->
                   </form>
               <?php }else { ?>
-                  <a href="<?php echo wp_logout_url(urlencode($_SERVER['REQUEST_URI'])); ?>" class="btn navbar-form pull-right">Logout</a>
+                  <a href="<?php echo wp_logout_url(urlencode($_SERVER['REQUEST_URI'])); ?>" class="btn btn-primary pull-right hint--error hint--bottom" data-hint="再见咯!">Logout</a>
                   <li><a class="pull-right" href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
                   </a></li>    
               <?php }?>
