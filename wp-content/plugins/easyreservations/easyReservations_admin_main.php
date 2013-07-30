@@ -1399,7 +1399,11 @@ if(isset($add)){
 			<tbody>
 				<tr>
 					<td nowrap style="width:45%"><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/user.png"> <?php printf ( __( 'Name' , 'easyReservations' ));?></td> 
-					<td><input type="text" name="name" value="<?php if(isset($_POST['name'])) echo $_POST['name']; ?>" align="middle"></td>
+					<td><input type="text" name="name" 
+                                                   value="<?php if(isset($_POST['name'])) echo $_POST['name'];?>" 
+                                                   onfocus="this.value='<?php global $current_user; get_currentuserinfo(); echo $current_user->display_name; ?>'"  
+                                                   align="middle"></td>
+                                        
 				</tr>
 				<tr class="alternate">
 					<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/day.png"> <?php printf ( __( 'From' , 'easyReservations' ));
@@ -1448,7 +1452,10 @@ if(isset($add)){
 				</tr>
 				<tr  class="alternate" >
 					<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/email.png"> <?php printf ( __( 'Email' , 'easyReservations' ));?></td> 
-					<td><input type="text" name="email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" onchange="easyreservations_send_price_admin();"></td>
+					<td><input type="text" name="email" 
+                                                   value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" 
+                                                   onchange="easyreservations_send_price_admin();"
+                                                   onfocus="this.value='<?php global $current_user; get_currentuserinfo(); echo $current_user->user_email; ?>'"></td>
 				</tr>
 				<tr>
 					<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/country.png"> <?php printf ( __( 'Country' , 'easyReservations' ));  if(isset($_POST['country'])) $count = $_POST['country']; else $count = '';?></td> 
