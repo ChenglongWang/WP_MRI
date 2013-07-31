@@ -284,7 +284,7 @@
 				$onClick=0;
 				if($cellcount < 10) $preparedCellcount='0'.$cellcount;
 				else $preparedCellcount=$cellcount;
-				if($dateToday < time()) $background2="url(".RESERVATIONS_URL ."/images/patbg.png) repeat";
+				if($dateToday < time()) $background2="url(".RESERVATIONS_URL ."images/patbg.png) repeat";
 				else $background2='';
 				$res->arrival = $dateToday-$interval;
 				$avail = $res->availFilter($roomcounty, 0, (int) $interval);
@@ -322,19 +322,19 @@
 						if(isset($daysOccupied[$CoutResNights3+1]) && isset($numberOccupied[$CoutResNights3-1]) && $numberOccupied[$CoutResNights3-1] != $daysOccupied[$CoutResNights3] && $numberOccupied[$CoutResNights3-1] != $numberOccupied[$CoutResNights3]) $wasFullTwo=1;
 
 						if(($CoutResNights2 == 0 && $cellcount != 1) || ($wasFullTwo == 1 && $cellcount != 1) || $dateToday - $arrival <= $interval){
-							$farbe2="url(".RESERVATIONS_URL ."/images/DERSTRING_start.png) right top no-repeat, ".$background2." ".$colorbgfree; 
+							$farbe2="url(".RESERVATIONS_URL ."images/DERSTRING_start.png) right top no-repeat, ".$background2." ".$colorbgfree; 
 							$itIS=0;
 						} elseif($CoutResNights2 != 0 || $cellcount == 1 || (isset($daysOccupied[$CoutResNights3]) && $lastDay==$daysOccupied[$CoutResNights3])){
-							$farbe2="url(".RESERVATIONS_URL ."/images/DERSTRING_middle.png) top repeat-x";
+							$farbe2="url(".RESERVATIONS_URL ."images/DERSTRING_middle.png) top repeat-x";
 							if($cellcount != 1) $borderside=0;
 							$itIS++;
 						}
 						if(isset($daysOccupied[$CoutResNights3+1]) AND $daysOccupied[$CoutResNights3] != $daysOccupied[$CoutResNights3+1] && $numberOccupied[$CoutResNights3] != $numberOccupied[$CoutResNights3+1]){
-							$farbe2="url(".RESERVATIONS_URL ."/images/DERSTRING_end.png) left top no-repeat, ".$background2." ".$colorbgfree; 
+							$farbe2="url(".RESERVATIONS_URL ."images/DERSTRING_end.png) left top no-repeat, ".$background2." ".$colorbgfree; 
 							$itIS=0;
 						}
 						if(isset($daysOccupied[$CoutResNights3+1]) && $daysOccupied[$CoutResNights3] == $daysOccupied[$CoutResNights3+1] && array_key_exists($CoutResNights3+1, $daysOccupied)){
-							$farbe2='url('.RESERVATIONS_URL .'/images/DERSTRING_cross.png) left top no-repeat DERZEWEITESTRING';
+							$farbe2='url('.RESERVATIONS_URL .'images/DERSTRING_cross.png) left top no-repeat DERZEWEITESTRING';
 							$CoutResNights2=0;
 							$CoutResNights3++;
 							$CountNumberOfAdd++;
