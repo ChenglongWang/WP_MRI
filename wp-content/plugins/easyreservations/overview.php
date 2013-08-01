@@ -95,11 +95,11 @@
 				<th colspan="<?php echo $daysshow+1; ?>"  class="overviewHeadline">
 					<span id="pickForm"><input name="dayPicker" id="dayPicker" type="hidden" value="<?php if(isset($dayPicker)) echo $dayPicker; ?>"></span> &nbsp;<b class="overviewDate"><?php echo $dateshow; ?></b><span id="ov_datefield"></span>
 					<span style="float:right">
-						<?php if($interval == 3600){ ?> 
+					<!--	<?php if($interval == 3600){ ?> 
 							<input name="daybutton" class="easySubmitButton-secondary" value="Days" type="button" onclick="easyRes_sendReq_Overview('<?php echo $moreget; ?>','no','<?php echo $daysshow; ?>',86400);resetSet();">
 						<?php } else { ?>
 							<input name="daybutton" class="easySubmitButton-secondary" value="Hours" type="button" onclick="easyRes_sendReq_Overview('<?php echo $moreget; ?>','no','<?php echo $daysshow; ?>',3600);resetSet();">
-						<?php } ?>
+						<?php } ?>-->
 						<input name="settimes" class="easySubmitButton-secondary" value="15" type="button" onclick="easyRes_sendReq_Overview('<?php echo $moreget; ?>','',15,<?php echo $interval; ?>);resetSet();">
 						<input name="settimes" class="easySubmitButton-secondary" value="30" type="button" onclick="easyRes_sendReq_Overview('<?php echo $moreget; ?>','',30,<?php echo $interval; ?>);resetSet();">
 						<input name="settimes" class="easySubmitButton-secondary" value="45" type="button" onclick="easyRes_sendReq_Overview('<?php echo $moreget; ?>','',45,<?php echo $interval; ?>);resetSet();">

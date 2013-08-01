@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: easyReservations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-23 22:38+0100\n"
-"PO-Revision-Date: 2013-07-29 18:18+0800\n"
+"PO-Revision-Date: 2013-08-01 18:02+0800\n"
 "Last-Translator: Feryaz Beer <support@easyreservations.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,18 +16,18 @@ msgstr ""
 
 #: easyReservations.php:31
 msgid "easyReservation"
-msgstr "预约系统"
+msgstr "Easy预约系统"
 
 #: easyReservations.php:31 easyReservations_admin_main.php:47
 #: easyReservations_admin_main.php:64 easyReservations_admin_main.php:83
 #: easyReservations_admin_main.php:1041
 #: easyReservations_admin_resources.php:515 lib/modules/stream/stream.php:149
 msgid "Reservation"
-msgstr "预约"
+msgstr "预约平台"
 
 #: easyReservations.php:32 easyReservations_admin_settings.php:333
 msgid "Dashboard"
-msgstr "仪表盘"
+msgstr "预约"
 
 #: easyReservations.php:33 easyReservations_admin_settings.php:337
 #: easyReservations_admin_settings.php:479
@@ -108,35 +108,35 @@ msgstr ""
 
 #: easyReservations_admin_main.php:291
 msgid "Email sent successfully"
-msgstr ""
+msgstr "邮件发送成功"
 
 #: easyReservations_admin_main.php:319
 msgid "Reservation approved"
-msgstr ""
+msgstr "预约已被审核通过"
 
 #: easyReservations_admin_main.php:320
 msgid "Reservation rejected"
-msgstr ""
+msgstr "预约已被拒绝"
 
 #: easyReservations_admin_main.php:332
 msgid "Reservations Dashboard"
-msgstr ""
+msgstr "预约平台仪表盘"
 
 #: easyReservations_admin_main.php:333 easyReservations_admin_resources.php:72
 msgid "Add New"
-msgstr ""
+msgstr "新建"
 
 #: easyReservations_admin_main.php:345 easyReservations_admin_main.php:977
 #: easyReservations_admin_main.php:1002 easyReservations_admin_main.php:1266
 #: easyReservations_admin_main.php:1466 lib/core/core.php:329
 #: lib/modules/hourlycal/hourlycal.php:206 lib/modules/paypal/paypal.php:268
 msgid "None"
-msgstr ""
+msgstr "空"
 
 #: easyReservations_admin_main.php:456 easyReservations_admin_main.php:855
 #: easyReservations_admin_resources.php:1169
 msgid "choose date"
-msgstr ""
+msgstr "选择日期"
 
 #: easyReservations_admin_main.php:571
 msgid "full"
@@ -254,24 +254,24 @@ msgstr ""
 #: easyReservations_admin_main.php:1013 easyReservations_admin_main.php:1258
 #: easyReservations_admin_main.php:1462 lib/functions/admin.php:707
 msgid "Approved"
-msgstr ""
+msgstr "已通过"
 
 #: easyReservations_admin_main.php:1013 easyReservations_admin_main.php:1258
 #: easyReservations_admin_main.php:1462 lib/functions/admin.php:695
 #: lib/functions/admin.php:707
 msgid "Pending"
-msgstr ""
+msgstr "未处理"
 
 #: easyReservations_admin_main.php:1013 easyReservations_admin_main.php:1258
 #: easyReservations_admin_main.php:1462 lib/functions/admin.php:696
 #: lib/functions/admin.php:707
 msgid "Rejected"
-msgstr ""
+msgstr "已拒绝"
 
 #: easyReservations_admin_main.php:1013 easyReservations_admin_main.php:1258
 #: lib/functions/admin.php:707
 msgid "Trashed"
-msgstr ""
+msgstr "已删除"
 
 #: easyReservations_admin_main.php:1014
 #: easyReservations_admin_resources.php:396
@@ -279,21 +279,21 @@ msgstr ""
 #: easyReservations_form_shortcode.php:389 lib/modules/coupons/coupons.php:36
 #: lib/modules/useredit/useredit.php:360
 msgid "Time"
-msgstr ""
+msgstr "时间"
 
 #: easyReservations_admin_main.php:1014 overview.php:164
 #: lib/modules/useredit/useredit.php:361
 msgid "Past"
-msgstr ""
+msgstr "过去"
 
 #: easyReservations_admin_main.php:1014 overview.php:114 overview.php:165
 msgid "Present"
-msgstr ""
+msgstr "现在"
 
 #: easyReservations_admin_main.php:1014 overview.php:166
 #: lib/modules/useredit/useredit.php:363
 msgid "Future"
-msgstr "未来"
+msgstr "将来"
 
 #: easyReservations_admin_main.php:1041 easyReservations_admin_main.php:1534
 #: easyReservations_admin_main.php:1547 lib/functions/admin.php:218
@@ -309,7 +309,7 @@ msgstr "拒绝"
 
 #: easyReservations_admin_main.php:1041
 msgid "View"
-msgstr ""
+msgstr "视图"
 
 #: easyReservations_admin_main.php:1043 lib/functions/admin.php:222
 #: lib/functions/admin.php:892 lib/modules/search/attributes.php:137
@@ -369,13 +369,13 @@ msgstr ""
 
 #: easyReservations_admin_main.php:1193 easyReservations_admin_main.php:1244
 msgid "Edit reservation"
-msgstr ""
+msgstr "编辑"
 
 #: easyReservations_admin_main.php:1194 lib/modules/useredit/useredit.php:62
 #: lib/modules/useredit/useredit.php:63 lib/modules/useredit/useredit.php:126
 #: lib/modules/useredit/useredit.php:132
 msgid "delete"
-msgstr ""
+msgstr "删除"
 
 #: easyReservations_admin_main.php:1206 easyReservations_admin_main.php:1405
 #: easyReservations_admin_resources.php:637 lib/modules/coupons/coupons.php:76
@@ -443,7 +443,7 @@ msgstr ""
 
 #: easyReservations_admin_main.php:1286
 msgid "Send mail"
-msgstr ""
+msgstr "发送邮件"
 
 #: easyReservations_admin_main.php:1291
 msgid "Send mail to user on edit"
@@ -499,31 +499,31 @@ msgstr ""
 #: easyReservations_admin_resources.php:548
 #: lib/modules/htmlmails/htmlmails.php:126
 msgid "Childs"
-msgstr ""
+msgstr "儿童"
 
 #: easyReservations_admin_main.php:1450
 msgid "Add reservation"
-msgstr ""
+msgstr "新建预约"
 
 #: easyReservations_admin_main.php:1478
 msgid "Fix Price"
-msgstr ""
+msgstr "修改价格"
 
 #: easyReservations_admin_main.php:1534
 msgid "Approve the reservation"
-msgstr ""
+msgstr "审核通过"
 
 #: easyReservations_admin_main.php:1534
 msgid "Reject the reservation"
-msgstr ""
+msgstr "审核未通过"
 
 #: easyReservations_admin_main.php:1546 easyReservations_admin_main.php:1568
 msgid "Send mail to guest"
-msgstr ""
+msgstr "向客户发送邮件"
 
 #: easyReservations_admin_main.php:1546
 msgid "Has been paid"
-msgstr ""
+msgstr "已支付"
 
 #: easyReservations_admin_main.php:1547
 msgid "the reservation, write a message and press send"
@@ -531,54 +531,54 @@ msgstr ""
 
 #: easyReservations_admin_main.php:1547
 msgid "The Guest will recieve that message in an email"
-msgstr ""
+msgstr "客户将收到电子邮件通知"
 
 #: easyReservations_admin_main.php:1568 lib/modules/useredit/useredit.php:76
 msgid "Send"
-msgstr ""
+msgstr "发送"
 
 #: easyReservations_admin_main_stats.php:36
 #: lib/classes/reservation.class.php:1001
 #: lib/modules/statistics/statistics.php:404
 #: lib/modules/useredit/useredit.php:356
 msgid "approved"
-msgstr ""
+msgstr "通过"
 
 #: easyReservations_admin_main_stats.php:36
 #: lib/classes/reservation.class.php:1001
 #: lib/modules/statistics/statistics.php:404
 #: lib/modules/useredit/useredit.php:358
 msgid "rejected"
-msgstr ""
+msgstr "拒绝"
 
 #: easyReservations_admin_main_stats.php:36
 #: lib/classes/reservation.class.php:1001
 #: lib/modules/statistics/statistics.php:404
 #: lib/modules/useredit/useredit.php:357
 msgid "pending"
-msgstr ""
+msgstr "未处理"
 
 #: easyReservations_admin_resources.php:9
 msgid "Resource and all its reservations deleted"
-msgstr ""
+msgstr "配置及其所有预约已被删除"
 
 #: easyReservations_admin_resources.php:10
 msgid "Resource deleted, but reservations couldnt"
-msgstr ""
+msgstr "配置已删除,但预约无法删除"
 
 #: easyReservations_admin_resources.php:26
 #: easyReservations_admin_resources.php:58
 #, php-format
 msgid "Resource #%d added"
-msgstr ""
+msgstr "资源 #%d 已添加"
 
 #: easyReservations_admin_resources.php:59
 msgid "Please enter a Title"
-msgstr ""
+msgstr "请输入标题"
 
 #: easyReservations_admin_resources.php:72
 msgid "Reservations Resources"
-msgstr ""
+msgstr "预约配置"
 
 #: easyReservations_admin_resources.php:72
 msgid "Post View"
@@ -589,43 +589,43 @@ msgstr ""
 #: easyReservations_admin_settings.php:889 lib/modules/paypal/paypal.php:110
 #: lib/modules/useredit/useredit.php:398
 msgid "Title"
-msgstr ""
+msgstr "标题"
 
 #: easyReservations_admin_resources.php:84
 #: easyReservations_admin_settings.php:1185 lib/functions/admin.php:312
 #: lib/modules/import/import.php:72 lib/modules/useredit/useredit.php:344
 #: lib/modules/useredit/useredit.php:662 lib/modules/useredit/useredit.php:824
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: easyReservations_admin_resources.php:85
 msgid "Quantity"
-msgstr ""
+msgstr "数量"
 
 #: easyReservations_admin_resources.php:86
 msgid "Base Price"
-msgstr ""
+msgstr "起价"
 
 #: easyReservations_admin_resources.php:88
 #: easyReservations_admin_resources.php:394
 #: easyReservations_admin_resources.php:450
 msgid "Filter"
-msgstr ""
+msgstr "筛选器"
 
 #: easyReservations_admin_resources.php:90
 #: easyReservations_admin_settings.php:891
 msgid "Excerpt"
-msgstr ""
+msgstr "摘录"
 
 #: easyReservations_admin_resources.php:118
 #: easyReservations_admin_resources.php:381
 #: lib/modules/useredit/useredit.php:61 lib/modules/useredit/useredit.php:131
 msgid "edit"
-msgstr ""
+msgstr "编辑"
 
 #: easyReservations_admin_resources.php:121
 msgid "edit "
-msgstr ""
+msgstr "编辑"
 
 #: easyReservations_admin_resources.php:130
 msgid "edit post"
@@ -633,19 +633,19 @@ msgstr ""
 
 #: easyReservations_admin_resources.php:131
 msgid "edit resource"
-msgstr ""
+msgstr "编辑配置"
 
 #: easyReservations_admin_resources.php:132
 msgid "copy resource settings"
-msgstr ""
+msgstr "复制配置设置"
 
 #: easyReservations_admin_resources.php:133
 msgid "Really delete this resource and all its reservations?"
-msgstr ""
+msgstr "确认要删除配置及其预约吗？"
 
 #: easyReservations_admin_resources.php:133
 msgid "trash"
-msgstr ""
+msgstr "垃圾箱"
 
 #: easyReservations_admin_resources.php:148
 msgid "Resource's count names changed"
@@ -791,7 +791,7 @@ msgstr ""
 #: easyReservations_admin_resources.php:493
 #: easyReservations_admin_resources.php:499 lib/functions/admin.php:697
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 #: easyReservations_admin_resources.php:516
 #: lib/modules/useredit/useredit.php:444
@@ -2762,7 +2762,7 @@ msgstr ""
 #: lib/functions/admin.php:224 lib/functions/admin.php:895
 #: lib/modules/invoice/editor.php:26
 msgid "Mail"
-msgstr ""
+msgstr "邮件"
 
 #: lib/functions/admin.php:288
 msgid "Reservations dashboard settings saved"
@@ -2843,7 +2843,7 @@ msgstr ""
 #: lib/modules/search/search.php:37 lib/modules/search/search.php:111
 #: lib/modules/search/search.php:210
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
 #: lib/functions/admin.php:339
 msgid "Bulk & Checkboxes"
@@ -2876,27 +2876,27 @@ msgstr ""
 
 #: lib/functions/admin.php:693
 msgid "Upcoming"
-msgstr ""
+msgstr "即将"
 
 #: lib/functions/admin.php:694 lib/modules/useredit/useredit.php:362
 msgid "Current"
-msgstr ""
+msgstr "今天"
 
 #: lib/functions/admin.php:698
 msgid "Old"
-msgstr ""
+msgstr "已过"
 
 #: lib/functions/admin.php:699
 msgid "Trash"
-msgstr ""
+msgstr "垃圾箱"
 
 #: lib/functions/admin.php:707
 msgid "View all statuses"
-msgstr ""
+msgstr "全部状态"
 
 #: lib/functions/admin.php:709
 msgid "Show all Dates"
-msgstr ""
+msgstr "全部日期"
 
 #: lib/functions/admin.php:723
 msgid "View all Resources"
@@ -2904,11 +2904,11 @@ msgstr ""
 
 #: lib/functions/admin.php:895 lib/functions/admin.php:947
 msgid "Restore"
-msgstr ""
+msgstr "恢复"
 
 #: lib/functions/admin.php:895 lib/functions/admin.php:947
 msgid "Delete Permanently"
-msgstr ""
+msgstr "永久删除"
 
 #: lib/functions/admin.php:900 lib/modules/stream/stream.php:130
 #: lib/modules/useredit/useredit.php:30 lib/modules/useredit/useredit.php:58
@@ -2926,15 +2926,15 @@ msgstr ""
 
 #: lib/functions/admin.php:947
 msgid "Move to Trash"
-msgstr ""
+msgstr "删除"
 
 #: lib/functions/admin.php:947
 msgid "Apply"
-msgstr ""
+msgstr "确定"
 
 #: lib/functions/admin.php:953
 msgid "Elements"
-msgstr ""
+msgstr "项"
 
 #: lib/functions/admin.php:974
 msgid "easyReservations Premium"
@@ -3030,79 +3030,79 @@ msgstr ""
 
 #: lib/functions/both.php:1008
 msgid "Monday"
-msgstr ""
+msgstr "周一"
 
 #: lib/functions/both.php:1009
 msgid "Tuesday"
-msgstr ""
+msgstr "周二"
 
 #: lib/functions/both.php:1010
 msgid "Wednesday"
-msgstr ""
+msgstr "周三"
 
 #: lib/functions/both.php:1011
 msgid "Thursday"
-msgstr ""
+msgstr "周四"
 
 #: lib/functions/both.php:1012
 msgid "Friday"
-msgstr ""
+msgstr "周五"
 
 #: lib/functions/both.php:1013
 msgid "Saturday"
-msgstr ""
+msgstr "周六"
 
 #: lib/functions/both.php:1014
 msgid "Sunday"
-msgstr ""
+msgstr "周日"
 
 #: lib/functions/both.php:1016
 msgid "January"
-msgstr ""
+msgstr "一月"
 
 #: lib/functions/both.php:1017
 msgid "February"
-msgstr ""
+msgstr "二月"
 
 #: lib/functions/both.php:1018
 msgid "March"
-msgstr ""
+msgstr "三月"
 
 #: lib/functions/both.php:1019
 msgid "April"
-msgstr ""
+msgstr "四月"
 
 #: lib/functions/both.php:1020
 msgid "May"
-msgstr ""
+msgstr "五月"
 
 #: lib/functions/both.php:1021
 msgid "June"
-msgstr ""
+msgstr "六月"
 
 #: lib/functions/both.php:1022
 msgid "July"
-msgstr ""
+msgstr "七月"
 
 #: lib/functions/both.php:1023
 msgid "August"
-msgstr ""
+msgstr "八月"
 
 #: lib/functions/both.php:1024
 msgid "September"
-msgstr ""
+msgstr "九月"
 
 #: lib/functions/both.php:1025
 msgid "October"
-msgstr ""
+msgstr "十月"
 
 #: lib/functions/both.php:1026
 msgid "November"
-msgstr ""
+msgstr "十一月"
 
 #: lib/functions/both.php:1027
 msgid "December"
-msgstr ""
+msgstr "十二月"
 
 #: lib/modules/coupons/coupons.php:19 lib/modules/coupons/coupons.php:183
 msgid "Coupons"
@@ -4458,7 +4458,7 @@ msgstr ""
 
 #: lib/widgets/form_widget.php:157
 msgid "Title:"
-msgstr ""
+msgstr "标题:"
 
 #: lib/widgets/form_widget.php:161
 msgid "Show calendar:"
