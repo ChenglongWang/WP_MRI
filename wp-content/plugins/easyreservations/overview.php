@@ -213,7 +213,7 @@
 						$roomDayPersons=round($roomcounty-$res->checkAvailability(3),1);
 						if($roomDayPersons <= 0) $textcolor='#FF3B38'; else $textcolor='#118D18';
 					} else $textcolor = '';
-					?><td axis="<?php echo $co+2;?>" style="color:<?php echo $textcolor; ?>" ><?php if($overview_options['overview_show_avail'] == 1)  echo '<small>'.$roomDayPersons.'</small>'; ?></small></td><?php
+					?><td axis="<?php echo $co+2;?>" style="color:<?php echo $textcolor; ?>" ><?php if($overview_options['overview_show_avail'] == 1)  echo '<small>'.$roomDayPersons.'</small>';?></small></td><?php
 					$co++;
 				} ?>
 		</tr><?php
@@ -221,7 +221,8 @@
 			if($bypers){
 				if($rowcount > 0) break;
 				$name = __( $resource->post_title);
-			} else {
+			}
+                        else {
 				if(isset($resource_names[$rowcount]) && !empty($resource_names[$rowcount])) $name = $resource_names[$rowcount];
 				else $name = '#'.($rowcount+1);
 			}
@@ -288,11 +289,12 @@
 				else $background2='';
 				$res->arrival = $dateToday-$interval;
 				$avail = $res->availFilter($roomcounty, 0, (int) $interval);
-
-				if($avail > 0) $colorbgfree='#FFEDED';
-				elseif(date($date_pat, $dateToday-$interval)==date($date_pat, time())) $colorbgfree = '#EDF0FF';
-				elseif(date("N", $dateToday-$interval)==6 OR date("N", $dateToday-$interval)==7) $colorbgfree = '#FFFFEB';
-				else $colorbgfree='#FFFFFF';
+                                
+                        	if($avail > 0) $colorbgfree='#FFEDED';
+                                //    elseif($avail !== "1") $colorbgfree='#082754';
+                                    elseif(date($date_pat, $dateToday-$interval)==date($date_pat, time())) $colorbgfree = '#8cb4fa';//today
+                                    elseif(date("N", $dateToday-$interval)==6 OR date("N", $dateToday-$interval)==7) $colorbgfree = '#FFFFEB';//weekend
+                                    else $colorbgfree='#FFFFFF';
 				if($bypers){
 					 $daycount = 0;
 					if(isset($datesHalfOccupied[$dateToday-$interval])) $daycount += $datesHalfOccupied[$dateToday-$interval]['i'];
@@ -311,8 +313,8 @@
 					}
 					continue;
 				}
-				if(isset($daysOccupied)){
-					if(in_array(date($date_pat, $dateToday), $daysOccupied)){
+				if(isset($daysOccupied)){//查看日期是否有安排
+					if(in_array(date($date_pat, $dateToday), $daysOccupied)){//查看今天是否有安排
 						if($numberOccupied[$CoutResNights3] != $CountNumberOfAdd && $cellcount != 1) $CountNumberOfAdd++;
 						if($reservationarray[$CountNumberOfAdd]['nights'] < 1) while($reservationarray[$CountNumberOfAdd]['nights'] < 1) $CountNumberOfAdd++;
 						$arrival = $reservationarray[$CountNumberOfAdd]['arDate'];
@@ -417,7 +419,7 @@
 						unset($tableclick);
 						$lastbackground=$backgrosund;
 						$wasFull=1;
-					} else {
+					} else {//如果今天没有安排
 						if($wasFull == 1) $CountNumberOfAdd++;
 						$CoutResNights2=0;
 						$class = ''; $value = ''; $title = '';

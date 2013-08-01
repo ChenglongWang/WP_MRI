@@ -491,10 +491,10 @@
 		public function availFilter($roomcount=1, $mode=0, $interval = false){ //Check if a resource is Avail or Full
 			$filters = get_post_meta($this->resource, 'easy_res_filter', true);
 			if($this->interval == 3600) $date_pattern = RESERVATIONS_DATE_FORMAT.' H:00';
-			else $date_pattern = RESERVATIONS_DATE_FORMAT;
+                            else $date_pattern = RESERVATIONS_DATE_FORMAT;
 			if(!$interval) $interval = easyreservations_get_interval($this->interval, $this->resource, 1);
 			if($this->departure == 0) $departure = $this->arrival + $interval;
-			else $departure = $this->departure;
+                            else $departure = $this->departure;
 			$error = '';
 			if(!empty($filters)){
 				foreach($filters as $filter){
