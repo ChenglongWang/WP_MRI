@@ -400,7 +400,18 @@
 						$title_one = 	date($date_pat, $arrival).' - '.date($date_pat, $departure).' <b>'.$reservationarray[$CountNumberOfAdd]['name'].'</b> (#'.$reservationarray[$CountNumberOfAdd]['ID'].')<br>';
 
 						if($itIS===1){
-							?><td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>"<?php echo $addname; ?> title="<?php echo $title_one; ?>" colspan="<?php echo $nights-1-$minusdays; ?>" class="er_overview_cell" onclick="<?php echo "location.href = 'admin.php?page=reservations&edit=".$reservationarray[$CountNumberOfAdd]['ID']."';"; ?>" style="background: <?php echo $farbe2;?>;cursor: pointer;text-decoration:none;padding:0px;font: normal 11px Arial, sans-serif;vertical-align:middle;; overflow:hidden;"  abbr="<?php echo $farbe2;?>" title="<?php echo $reservationarray[$CountNumberOfAdd]['name']; ?>" <?php if($overview_options['overview_onmouseover'] == 1){ ?>onmouseover="hoverEffect(this,'<?php echo date('d.m H:i', $arrival+$interval).' - '.date('d.m H:i', $departure); ?>');"<?php } ?>>
+							?>
+                                                        <td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>"<?php echo $addname; ?> 
+                                                            title="<?php echo $title_one; ?>" 
+                                                            colspan="<?php echo $nights-1-$minusdays; ?>" 
+                                                            class="er_overview_cell" 
+                                                            onclick="<?php echo "location.href = 'admin.php?page=reservations&edit=".$reservationarray[$CountNumberOfAdd]['ID']."';"; ?>"
+                                                            style="background: <?php echo $farbe2;?>; cursor: pointer; text-decoration:none; padding:0px; font: normal 11px Arial, sans-serif; vertical-align:middle; overflow:visible;"  
+                                                            abbr="<?php echo $farbe2;?>" 
+                                                            title="<?php echo $reservationarray[$CountNumberOfAdd]['name']; ?>" 
+                                                                <?php if($overview_options['overview_onmouseover'] == 1){ ?>
+                                                                onmouseover="hoverEffect(this,'<?php echo date($date_pat, $arrival+$interval).' - '.date($date_pat, $departure); ?>');"
+                                                                <?php } ?>>
 							<?php echo substr($reservationarray[$CountNumberOfAdd]['name'], 0, ($nights-1-$minusdays)*3); ?>
 							</td><?php
 						} elseif($itIS==$nightsproof+1 || $itIS==$nightsproof || $itIS==0) {
@@ -417,7 +428,15 @@
 									$farbe2 = substr($farbe2, 0, -7).$colorbgfree;
 								}
 								if($borderside == 1 ) $title .= $title_one;?>
-							<td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>"  title="<?php echo $title; ?>" <?php if($borderside == 0) echo 'class="er_overview_cell"'; ?> <?php echo $addname; ?> onclick="<?php if(isset($nonepage) && isset($tableclick)) echo $tableclick; elseif((isset($edit) || isset($add) || isset($nonepage)) && $onClick==0){ ?>;changer();clickTwo(this,'<?php echo $dateToday-$interval; ?>');clickOne(this,'<?php echo $dateToday-$interval; ?>');setVals2('<?php echo $roomID; ?>','<?php echo $rowcount; ?>');<?php  } elseif($onClick==1){ echo "location.href = 'admin.php?page=reservations&edit=".$reservationarray[$CountNumberOfAdd]['ID']."';"; } ?>" style="background: <?php echo $farbe2;?>; padding:0px; overflow:hidden; text-shadow:none; border-style:none; text-decoration:none; font: normal 11px Arial, sans-serif; vertical-align:middle;<?php if($onClick==1) echo 'cursor:pointer'; ?>" abbr="<?php echo $farbe2;?>" axis="<?php echo $cellcount+1; ?>" <?php if($overview_options['overview_onmouseover'] == 1){ ?>onmouseover="hoverEffect(this,'<?php echo date(RESERVATIONS_DATE_FORMAT, $dateToday-$interval); ?>');"<?php } ?>>
+							<td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>"  
+                                                            title="<?php echo $title; ?>" <?php if($borderside == 0) echo 'class="er_overview_cell"'; ?> <?php echo $addname; ?> 
+                                                            <?php echo $class; if(isset($edit) || isset($add) || isset($nonepage)){ ?>onclick="changer();clickTwo(this,'<?php echo  $dateToday-$interval; ?>');clickOne(this,'<?php echo $dateToday-$interval; ?>');setVals2('<?php echo $roomID; ?>','<?php echo $rowcount; ?>');"<?php } ?>
+                                                            style="background: <?php echo $farbe2;?>; padding:0px; overflow:hidden; text-shadow:none; border-style:none; text-decoration:none; font: normal 11px Arial, sans-serif; vertical-align:middle;<?php if($onClick==1) echo 'cursor:pointer'; ?>" 
+                                                            abbr="<?php echo $farbe2;?>" 
+                                                            axis="<?php echo $cellcount+1; ?>" 
+                                                                <?php if($overview_options['overview_onmouseover'] == 1){ ?>
+                                                                onmouseover="hoverEffect(this,'<?php echo date(RESERVATIONS_DATE_FORMAT, $dateToday-$interval); ?>');"
+                                                                <?php } ?>>
 								<?php echo $value; ?>
 							</td><?php
 						}
@@ -440,13 +459,13 @@
 						}
 						?><td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>" 
                                                       title="<?php echo $title; ?>" 
-                                                      <?php echo $class; if(isset($edit) || isset($add) || isset($nonepage)){ ?>onclick="<?php if(isset($nonepage) && isset($tableclick)) echo $tableclick; else { ?>changer();clickTwo(this,'<?php echo $dateToday-$interval; ?>');clickOne(this,'<?php echo $dateToday-$interval; ?>');setVals2('<?php echo $roomID; ?>','<?php echo $rowcount; ?>');<?php } ?>"<?php } ?> 
+                                                      <?php echo $class; if(isset($edit) || isset($add) || isset($nonepage)){ ?>onclick="changer();clickTwo(this,'<?php echo  $dateToday-$interval; ?>');clickOne(this,'<?php echo $dateToday-$interval; ?>');setVals2('<?php echo $roomID; ?>','<?php echo $rowcount; ?>');"<?php } ?>
                                                       style="background:<?php echo $background2.' '.$colorbgfree;?>" 
                                                       abbr="<?php echo $background2.' '.$colorbgfree;?>" 
                                                       <?php if($overview_options['overview_onmouseover'] == 1){ ?>onmouseover="hoverEffect(this,'<?php echo date($date_pat, $dateToday-$interval); ?>');"<?php } ?> 
                                                       axis="<?php echo $cellcount+1; ?>">
 								<?php echo $value; ?>
-						<?php
+                                                      <?php
 						$wasFull=0;
 					}
 				} else {
@@ -456,12 +475,21 @@
 						$title = $datesHalfOccupied[$dateToday-$interval]['v'];
 						$class = 'class="er_overview_cell"';
 						$tableclick = 'onclick="document.getElementById(\'easy-table-search-field\').value = \''.implode(',', $datesHalfOccupied[$dateToday-$interval]['id']).'\';easyreservation_send_table(\'all\', 1);"';
-						if(isset($id) && in_array($id, $datesHalfOccupied[$dateToday-$interval]['id'])) $colorbgfree = '#FCEA74';
+                                                if(isset($id) && in_array($id, $datesHalfOccupied[$dateToday-$interval]['id'])) $colorbgfree = '#FCEA74';
 						if(date($date_pat, $dateToday-$interval) == date($date_pat, time())) $colorbgfree = '#118D18';
 						elseif($dateToday-$interval > time()) $colorbgfree = '#CC3333';
 						else $colorbgfree = '#2A78D8';
 					}
-					?><td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>" title="<?php echo $title; ?>" <?php echo $class; if(isset($edit) || isset($add) || isset($nonepage)){ ?>onclick="<?php if(isset($nonepage) && isset($tableclick)) echo $tableclick; else { ?>changer();clickTwo(this,'<?php echo  $dateToday-$interval; ?>');clickOne(this,'<?php echo $dateToday-$interval; ?>');setVals2('<?php echo $roomID; ?>','<?php echo $rowcount; ?>');<?php } ?>"<?php } ?> style="background:<?php echo $background2.' '.$colorbgfree;?>" abbr="<?php echo $background2.' '.$colorbgfree;?>" <?php if($overview_options['overview_onmouseover'] == 1){ ?>onmouseover="hoverEffect(this,'<?php echo date($date_pat, $dateToday-$interval); ?>');"<?php } ?> axis="<?php echo $cellcount+1; ?>"><?php echo $value; ?></td><?php
+					?>
+                                        <td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>" 
+                                            title="<?php echo $title; ?>" 
+                                                <?php echo $class; if(isset($edit) || isset($add) || isset($nonepage)){ ?>onclick="changer();clickTwo(this,'<?php echo  $dateToday-$interval; ?>');clickOne(this,'<?php echo $dateToday-$interval; ?>');setVals2('<?php echo $roomID; ?>','<?php echo $rowcount; ?>');"<?php } ?>
+                                                style="background:<?php echo $background2.' '.$colorbgfree;?>" 
+                                                abbr="<?php echo $background2.' '.$colorbgfree;?>" 
+                                                    <?php if($overview_options['overview_onmouseover'] == 1){ ?>
+                                                    onmouseover="hoverEffect(this,'<?php echo date($date_pat, $dateToday-$interval); ?>');"
+                                                    <?php } ?> 
+                                                axis="<?php echo $cellcount+1; ?>"><?php echo $value; ?></td><?php
 				}
 			}
 			unset($daysOccupied);
