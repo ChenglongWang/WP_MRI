@@ -232,10 +232,13 @@
 			else $lastbackground='#CC3333';
 			if($rowcount == $roomcounty) $borderbottom=0;
 			else $borderbottom=1; ?>
-			<tr id="room<?php echo $rowcount.'-'.$roomID; ?>">
-				<td class="roomhead" style="color:#8C8C8C;" onclick="<?php if(isset($edit)){ ?>document.getElementById('datepicker').value='<?php echo date("d.m.Y",$reservation_arrival_stamp); ?>';document.getElementById('datepicker2').value='<?php echo date("d.m.Y",$reservation_departure_stamp); ?>';setVals2(<?php echo $roomID; ?>,<?php echo $rowcount; ?>);<?php } if(isset($edit) || isset($approve)){ ?>changer();clickOne(document.getElementById('<?php echo $roomID.'-'.$rowcount.'-'.$numberhighstart; ?>'),'<?php echo $reservation_arrival_stamp; ?>');clickTwo(document.getElementById('<?php echo $roomID.'-'.$rowcount.'-'.$numberlaststart; ?>'),'<?php echo $reservation_departure_stamp; ?>');<?php } if(isset($approve)){ ?>document.reservation_approve.roomexactly.selectedIndex=<?php echo $rowcount-1; ?>;<?php } ?>"  nowrap>
+			<tr id="room<?php echo $rowcount.'-'.$roomID; ?>">  <!-- overview  'room row' display part. -->
+				<td class="roomhead" style="color:#8C8C8C;" 
+                                    onclick="<?php if(isset($edit)){ ?>document.getElementById('datepicker').value='<?php echo date("d.m.Y",$reservation_arrival_stamp); ?>';document.getElementById('datepicker2').value='<?php echo date("d.m.Y",$reservation_departure_stamp); ?>';setVals2(<?php echo $roomID; ?>,<?php echo $rowcount; ?>);<?php } 
+                                                    if(isset($edit) || isset($approve)){ ?>changer();clickOne(document.getElementById('<?php echo $roomID.'-'.$rowcount.'-'.$numberhighstart; ?>'),'<?php echo $reservation_arrival_stamp; ?>');clickTwo(document.getElementById('<?php echo $roomID.'-'.$rowcount.'-'.$numberlaststart; ?>'),'<?php echo $reservation_departure_stamp; ?>');<?php } 
+                                                    if(isset($approve)){ ?>document.reservation_approve.roomexactly.selectedIndex=<?php echo $rowcount-1; ?>;<?php } ?>"  nowrap>
 					&nbsp;<?php echo $name; ?>
-				</td><?php
+				</td><?php //以下显示每个room的计算部分.
 			$CoutResNights2=0; $CoutResNights3=0; $CountNumberOfAdd=0; $wasFull=0; $countdifferenz=0; $itIS=0; $cellcount=0; $datesHalfOccupied = ''; $personsOccupied = '';
 			if(isset($reservations[$rowcount])){
 				foreach($reservations[$rowcount] as $reservation){
@@ -285,7 +288,7 @@
 				$onClick=0;
 				if($cellcount < 10) $preparedCellcount='0'.$cellcount;
 				else $preparedCellcount=$cellcount;
-				if($dateToday < time()) $background2="url(".RESERVATIONS_URL ."images/patbg.png) repeat";
+				if($dateToday < time()) $background2="url(".RESERVATIONS_URL ."images/patbg.png) repeat";//如果日期是过去 则显示xxx禁止标志.
 				else $background2='';
 				$res->arrival = $dateToday-$interval;
 				$avail = $res->availFilter($roomcounty, 0, (int) $interval);
@@ -295,7 +298,7 @@
                                     elseif(date($date_pat, $dateToday-$interval)==date($date_pat, time())) $colorbgfree = '#8cb4fa';//today
                                     elseif(date("N", $dateToday-$interval)==6 OR date("N", $dateToday-$interval)==7) $colorbgfree = '#FFFFEB';//weekend
                                     else $colorbgfree='#FFFFFF';
-				if($bypers){
+				if($bypers){ //在本预约系统中无效选项 考虑可以禁止.
 					 $daycount = 0;
 					if(isset($datesHalfOccupied[$dateToday-$interval])) $daycount += $datesHalfOccupied[$dateToday-$interval]['i'];
 					if(isset($personsOccupied[date($date_pat, $dateToday)])) $daycount += $personsOccupied[date($date_pat, $dateToday)];
@@ -433,7 +436,13 @@
 							elseif($dateToday-$interval > time()) $colorbgfree = '#CC3333';
 							else $colorbgfree = '#2A78D8';
 						}
-						?><td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>" title="<?php echo $title; ?>" <?php echo $class; if(isset($edit) || isset($add) || isset($nonepage)){ ?>onclick="<?php if(isset($nonepage) && isset($tableclick)) echo $tableclick; else { ?>changer();clickTwo(this,'<?php echo $dateToday-$interval; ?>');clickOne(this,'<?php echo $dateToday-$interval; ?>');setVals2('<?php echo $roomID; ?>','<?php echo $rowcount; ?>');<?php } ?>"<?php } ?> style="background:<?php echo $background2.' '.$colorbgfree;?>" abbr="<?php echo $background2.' '.$colorbgfree;?>" <?php if($overview_options['overview_onmouseover'] == 1){ ?>onmouseover="hoverEffect(this,'<?php echo date($date_pat, $dateToday-$interval); ?>');"<?php } ?> axis="<?php echo $cellcount+1; ?>">
+						?><td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>" 
+                                                      title="<?php echo $title; ?>" 
+                                                      <?php echo $class; if(isset($edit) || isset($add) || isset($nonepage)){ ?>onclick="<?php if(isset($nonepage) && isset($tableclick)) echo $tableclick; else { ?>changer();clickTwo(this,'<?php echo $dateToday-$interval; ?>');clickOne(this,'<?php echo $dateToday-$interval; ?>');setVals2('<?php echo $roomID; ?>','<?php echo $rowcount; ?>');<?php } ?>"<?php } ?> 
+                                                      style="background:<?php echo $background2.' '.$colorbgfree;?>" 
+                                                      abbr="<?php echo $background2.' '.$colorbgfree;?>" 
+                                                      <?php if($overview_options['overview_onmouseover'] == 1){ ?>onmouseover="hoverEffect(this,'<?php echo date($date_pat, $dateToday-$interval); ?>');"<?php } ?> 
+                                                      axis="<?php echo $cellcount+1; ?>">
 								<?php echo $value; ?>
 						<?php
 						$wasFull=0;

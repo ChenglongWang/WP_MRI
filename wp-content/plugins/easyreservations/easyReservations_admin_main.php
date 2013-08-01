@@ -152,7 +152,7 @@ function reservation_main_page() {
 			else $res->resourcenumber = 0;
 			$res->reservated = strtotime($_POST["reservation_date"]);
 			$res->arrival = (strtotime($_POST["date"])+($from_hour*60));
-			$res->departure = (strtotime($_POST["dateend"])+($to_hour*60));
+			$res->departure = (strtotime($_POST["dateend"])+($to_hour*60)); //离开时间.
 			if(!empty($customfields))	$res->Customs($customfields, true, false, false, 'cstm');
 			if(!empty($custompfields)) $res->Customs($custompfields, true, false, true, 'cstm');
 			$res = apply_filters('easy-edit-prices', $res);
@@ -192,7 +192,7 @@ function reservation_main_page() {
 	if(isset($_POST['addreservation']) && check_admin_referer( 'easy-main-add', 'easy-main-add' )){
 		if(isset($_POST['from-time-hour'])) $from_hour = ((int) $_POST['from-time-hour']*60)+(int) $_POST['from-time-min']; else $from_hour = 00*60; //origin: 12*60
 		if(isset($_POST['to-time-hour']))  $to_hour = ((int) $_POST['to-time-hour']*60)+(int)$_POST['to-time-min'];else $to_hour = 23*60;
-
+                
 		$ADDcustomFields = '';
 		for($theCount = 0; $theCount < 100; $theCount++){
 			if(isset($_POST["customvalue".$theCount]) && isset($_POST["customtitle".$theCount])){
@@ -1203,12 +1203,18 @@ if(isset($edit)){
 							<td nowrap style="min-width:65%;width:65%"><input type="text" name="name" align="middle" value="<?php echo $res->name;?>"></td>
 						</tr>
 						<tr class="alternate">
-							<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/day.png"> <?php printf ( __( 'From' , 'easyReservations' ));?>:</td> 
-							<td><input type="text" id="datepicker" style="width:80px" name="date" value="<?php echo date(RESERVATIONS_DATE_FORMAT,$res->arrival); ?>" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(1);<?php }?>"> <select name="from-time-hour" id="from-time-hour" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(0);<?php }?>"><?php echo easyreservations_num_options("00",23,date("H",$res->arrival)); ?></select>:<select name="from-time-min"><?php echo easyreservations_num_options("00",59,date("i",$res->arrival)); ?></select></td>
+							<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/day.png"> <?php printf ( __( 'From' , 'easyReservations' ));?>:
+							<input type="text" id="datepicker" style="width:80px" name="date" value="<?php echo date(RESERVATIONS_DATE_FORMAT,$res->arrival); ?>" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(1);<?php }?>"> 
+                                                        <!--    <select name="from-time-hour" id="from-time-hour" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(0);<?php }?>"><?php echo easyreservations_num_options("00",23,date("H",$res->arrival)); ?></select>:
+                                                            <select name="from-time-min"><?php echo easyreservations_num_options("00",59,date("i",$res->arrival)); ?></select> -->
+                                               <!--         </td>
 						</tr>
-						<tr>
-							<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/to.png"> <?php printf ( __( 'To' , 'easyReservations' ));?>:</td> 
-							<td><input type="text" id="datepicker2" style="width:80px" name="dateend" value="<?php echo date(RESERVATIONS_DATE_FORMAT,$res->departure); ?>" onchange="easyreservations_send_price_admin();changer();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(2);<?php }?>"> <select name="to-time-hour" id="to-time-hour" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(0);<?php }?>"><?php echo easyreservations_num_options("00",23,date("H",$res->departure)); ?></select>:<select name="to-time-min"><?php echo easyreservations_num_options("00",59,date("i",$res->departure)); ?></select></td>
+						<tr> -->
+							<td><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/to.png"> <?php printf ( __( 'To' , 'easyReservations' ));?>:
+							<input type="text" id="datepicker2" style="width:80px" name="dateend" value="<?php echo date(RESERVATIONS_DATE_FORMAT,$res->departure); ?>" onchange="easyreservations_send_price_admin();changer();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(2);<?php }?>"> 
+                                                        <!--   <select type="hide" name="to-time-hour" id="to-time-hour" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(0);<?php }?>"><?php echo easyreservations_num_options("00",23,date("H",$res->departure)); ?></select>:
+                                                        <!--   <select type="hide" name="to-time-min"><?php echo easyreservations_num_options("00",59,date("i",$res->departure)); ?></select> -->
+                                                        </td>
 						</tr>
 						<tr class="alternate" id="easy_edit_persons">
 							<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/persons.png"> <?php echo __( 'Persons' , 'easyReservations' );?></td> 
@@ -1420,7 +1426,7 @@ if(isset($add)){
                                         <img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/to.png"> <?php printf ( __( 'To' , 'easyReservations' ));
 				//	if(isset($_POST['to-time-hour'])) $totimeh = $_POST['to-time-hour']; else $totimeh = 23;
 				//	if(isset($_POST['to-time-min'])) $totimem = $_POST['to-time-min']; else $totimem = 00;
-                                        $totimeh = 23;
+                                        $totimeh = 16;
                                         $totimem = 00;
                                         ?>:
                                         <input type="text" id="datepicker2" style="width:80px" name="dateend" value="<?php if(isset($_POST['dateend'])) echo $_POST['dateend']; ?>" onchange="easyreservations_send_price_admin();changer();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(2);<?php }?>">
