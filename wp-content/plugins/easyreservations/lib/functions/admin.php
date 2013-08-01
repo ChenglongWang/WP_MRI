@@ -871,13 +871,17 @@ if(isset($_GET['page'])){
 								<span style="color:#444;font-weight: bold;font-size:15px;"><?php echo date('d', $res->arrival); ?></span>
 								<span style="color:#777;font-weight: bold;font-size: 13px;"><?php echo date('M', $res->arrival); ?></span>
 								<?php if($year){ ?><span style="color:#777;font-weight: bold;font-size: 14px;"><?php echo date('Y', $res->arrival); ?></span><?php } ?>
-								<?php if(RESERVATIONS_USE_TIME == 1){ ?><span style="color:#999;font-weight: bold;font-size: 11px;"><?php echo date('H:i', $res->arrival); ?></span><?php } ?>
+								<?php if(RESERVATIONS_USE_TIME == 1){ ?>
+                                                                    <span style="color:#999;font-weight: bold;font-size: 11px;">ID: #<?php echo $res->id; ?></span>
+                                                                <?php } ?>
 							</div>
 							<div>
 								<span style="color:#444;font-weight: bold;font-size: 15px;"><?php echo date('d', $res->departure); ?></span>
 								<span style="color:#777;font-weight: bold;font-size: 13px;"><?php echo date('M', $res->departure); ?></span>
 								<?php if($year){ ?><span style="color:#777;font-weight: bold;font-size: 14px;"><?php echo date('Y', $res->departure); ?></span><?php } ?>
-								<?php if(RESERVATIONS_USE_TIME == 1){ ?><span style="color:#999;font-weight: bold;font-size: 11px;"><?php echo date('H:i', $res->departure); ?></span><?php } ?>
+							<!--	<?php if(RESERVATIONS_USE_TIME == 1){ ?>
+                                                                    <span style="color:#999;font-weight: bold;font-size: 11px;"><?php echo date('H:i', $res->departure); ?></span>
+                                                                <?php } ?>-->
 							</div>
 						</td>
 					<?php } if($table_options['table_name'] == 1 || $table_options['table_id'] == 1){ ?>

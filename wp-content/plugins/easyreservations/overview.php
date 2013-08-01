@@ -10,14 +10,14 @@
 	else $interval = 86400;
 
 	if($interval == 3600){
-		$date_pat = "d.m.Y H";
+		$date_pat = "m/d/Y H";
 	} else {
-		$date_pat = "d.m.Y";
+		$date_pat = "m/d/Y";
 	}
 
 	if(isset($_POST['dayPicker'])){
 		$dayPicker=$_POST['dayPicker'];
-		$daysbetween=(strtotime($dayPicker)-strtotime(date("d.m.Y", time())))/$interval;
+		$daysbetween=(strtotime($dayPicker)-strtotime(date($date_pat, time())))/$interval;
 		$moreget=round($daysbetween/$interval*$interval)+2;
 		$main_options = get_option("reservations_main_options");
 		$overview_options = $main_options['overview'];
@@ -53,7 +53,7 @@
 	|
 	/* - - - - - - - - - - - - - - - - */
 
-	$timevariable=strtotime(date("d.m.Y", time()))-($interval*3); //Timestamp of first Second of today
+	$timevariable=strtotime(date($date_pat, time()))-($interval*3); //Timestamp of first Second of today
 	$eintagmalstart=$interval*$moreget;
 	$eintagmalend=$interval*$daysshow;
 	$timesx=$timevariable+$eintagmalstart; // Timestamp of Startdate of Overview
@@ -62,7 +62,7 @@
 	$dateshow=date("d. ", $timesx).$monthes[date("n", $timesx)-1].date(" Y", $timesx).' - '.date("d. ", $timesy-$interval).$monthes[date("n", $timesy-$interval)-1].date(" Y", $timesy-$interval);											
 	$stardate=date("Y-m-d H:i", $timesx); // Formated Startdate
 	$enddate=date("Y-m-d H:i", $timesy-$interval); // Formated Enddate
-	if(!isset($daysbetween)) $daysbetween = ($timesx/$interval)-(strtotime(date("d.m.Y", time()))/$interval);
+	if(!isset($daysbetween)) $daysbetween = ($timesx/$interval)-(strtotime(date($date_pat, time()))/$interval);
 
 	if(isset($reservation_arrival_stamp)){
 		$numberhighstart=ceil(($reservation_arrival_stamp-$timesx)/$interval);
@@ -122,15 +122,15 @@
 		if(isset($nonepage)) $date_style = 'ov-days-hover'; else $date_style = '';
 		while($co < $daysshow){
 			$thedaydate=$timesx+($interval*$co);
-			if($interval == 86400 || date("d.m.Y", $lastdate) != date("d.m.Y", $thedaydate)){
+			if($interval == 86400 || date($date_pat, $lastdate) != date($date_pat, $thedaydate)){
 				if($interval == 3600){
-					$tomorrow = strtotime(date("d.m.Y", $thedaydate))+86400;
+					$tomorrow = strtotime(date($date_pat, $thedaydate))+86400;
 					$diff = round(($tomorrow - $thedaydate)/$interval);
 				} else{
 					$diff = 1;
 					if(isset($reservation_arrival_stamp) && $thedaydate >=  $reservation_arrival_stamp-$interval && $thedaydate <= $reservation_departure_stamp) $background_highlight='backgroundhighlight';
 				}
-				if(date("d.m.Y", $thedaydate) ==  date("d.m.Y", time())) $background_highlight='backgroundtoday';
+				if(date($date_pat, $thedaydate) ==  date($date_pat, time())) $background_highlight='backgroundtoday';
 				elseif(!isset($background_highlight)) $background_highlight='backgroundnormal';?>
 				<td colspan="<?php echo $diff; ?>" class="<?php echo  $background_highlight; ?> ov-days <?php echo $date_style; ?>" style="vertical-align:middle;padding:1px 0px;<?php if($interval == 86400) echo 'min-width:20px;'; ?>" onclick="overviewSelectDate('<?php echo date(RESERVATIONS_DATE_FORMAT,$thedaydate); ?>');">
 					<?php if($interval == 86400) echo date("j",$thedaydate).'<br><small>'.$days[date("N",$thedaydate)-1]; else echo '<small style="overflow:hidden;display:inline-block;">'.date(RESERVATIONS_DATE_FORMAT, $thedaydate); echo '</small>'; ?>
@@ -234,7 +234,7 @@
 			else $borderbottom=1; ?>
 			<tr id="room<?php echo $rowcount.'-'.$roomID; ?>">  <!-- overview  'room row' display part. -->
 				<td class="roomhead" style="color:#8C8C8C;" 
-                                    onclick="<?php if(isset($edit)){ ?>document.getElementById('datepicker').value='<?php echo date("d.m.Y",$reservation_arrival_stamp); ?>';document.getElementById('datepicker2').value='<?php echo date("d.m.Y",$reservation_departure_stamp); ?>';setVals2(<?php echo $roomID; ?>,<?php echo $rowcount; ?>);<?php } 
+                                    onclick="<?php if(isset($edit)){ ?>document.getElementById('datepicker').value='<?php echo date($date_pat,$reservation_arrival_stamp); ?>';document.getElementById('datepicker2').value='<?php echo date($date_pat,$reservation_departure_stamp); ?>';setVals2(<?php echo $roomID; ?>,<?php echo $rowcount; ?>);<?php } 
                                                     if(isset($edit) || isset($approve)){ ?>changer();clickOne(document.getElementById('<?php echo $roomID.'-'.$rowcount.'-'.$numberhighstart; ?>'),'<?php echo $reservation_arrival_stamp; ?>');clickTwo(document.getElementById('<?php echo $roomID.'-'.$rowcount.'-'.$numberlaststart; ?>'),'<?php echo $reservation_departure_stamp; ?>');<?php } 
                                                     if(isset($approve)){ ?>document.reservation_approve.roomexactly.selectedIndex=<?php echo $rowcount-1; ?>;<?php } ?>"  nowrap>
 					&nbsp;<?php echo $name; ?>
@@ -254,8 +254,8 @@
                                                 $round = $res_adate;
 						if(isset($datesHalfOccupied[$round]['i'])) $datesHalfOccupied[$round]['i'] += 1;
 						else $datesHalfOccupied[$round]['i'] = 1;
-						if(isset($datesHalfOccupied[$round]['v'])) $datesHalfOccupied[$round]['v'] .= date('d.m H:i', $res_adate_stamp).' - '.date('d.m H:i', $res_departure_stamp).' <b>'.$res_name.'</b> (#'.$res_id.')<br>';
-						else $datesHalfOccupied[$round]['v'] = date('d.m H:i', $res_adate_stamp).' - '.date('d.m H:i', $res_departure_stamp).' <b>'.$res_name.'</b> (#'.$res_id.')<br>';
+						if(isset($datesHalfOccupied[$round]['v'])) $datesHalfOccupied[$round]['v'] .= date($date_pat, $res_adate_stamp).' - '.date($date_pat, $res_departure_stamp).' <b>'.$res_name.'</b> (#'.$res_id.')<br>';
+						else $datesHalfOccupied[$round]['v'] = date($date_pat, $res_adate_stamp).' - '.date($date_pat, $res_departure_stamp).' <b>'.$res_name.'</b> (#'.$res_id.')<br>';
 						$datesHalfOccupied[$round]['id'][] = $res_id;
 						if(isset($personsOccupied[date($date_pat, $round+$interval)])) $personsOccupied[date($date_pat, $round+$interval)] += $reservation->persons;
 						else $personsOccupied[date($date_pat, $round+$interval)] = $reservation->persons;
@@ -397,7 +397,7 @@
 							$nightsproof=$nights-$minusdays;
 						}
 
-						$title_one = 	date('d.m H:i', $arrival).' - '.date('d.m H:i', $departure).' <b>'.$reservationarray[$CountNumberOfAdd]['name'].'</b> (#'.$reservationarray[$CountNumberOfAdd]['ID'].')<br>';
+						$title_one = 	date($date_pat, $arrival).' - '.date($date_pat, $departure).' <b>'.$reservationarray[$CountNumberOfAdd]['name'].'</b> (#'.$reservationarray[$CountNumberOfAdd]['ID'].')<br>';
 
 						if($itIS===1){
 							?><td id="<?php echo $roomID.'-'.$rowcount.'-'.$preparedCellcount; ?>"<?php echo $addname; ?> title="<?php echo $title_one; ?>" colspan="<?php echo $nights-1-$minusdays; ?>" class="er_overview_cell" onclick="<?php echo "location.href = 'admin.php?page=reservations&edit=".$reservationarray[$CountNumberOfAdd]['ID']."';"; ?>" style="background: <?php echo $farbe2;?>;cursor: pointer;text-decoration:none;padding:0px;font: normal 11px Arial, sans-serif;vertical-align:middle;; overflow:hidden;"  abbr="<?php echo $farbe2;?>" title="<?php echo $reservationarray[$CountNumberOfAdd]['name']; ?>" <?php if($overview_options['overview_onmouseover'] == 1){ ?>onmouseover="hoverEffect(this,'<?php echo date('d.m H:i', $arrival+$interval).' - '.date('d.m H:i', $departure); ?>');"<?php } ?>>
@@ -411,7 +411,7 @@
 									$title .= $datesHalfOccupied[$dateToday-$interval]['v'];
 									$tableclick = 'document.getElementById(\'easy-table-search-field\').value = \''.$reservationarray[$CountNumberOfAdd]['ID'].','.implode(',', $datesHalfOccupied[$dateToday-$interval]['id']).'\';easyreservation_send_table(\'all\', 1);';
 									if(isset($id) && in_array($id, $datesHalfOccupied[$dateToday-$interval]['id'])) $colorbgfree = '#FCEA74';
-									elseif(date("d.m.Y", $dateToday-$interval) == date("d.m.Y", time())) $colorbgfree = '#6ECC72';
+									elseif(date($date_pat, $dateToday-$interval) == date($date_pat, time())) $colorbgfree = '#6ECC72';
 									elseif($dateToday-$interval > time()) $colorbgfree = '#E07B7B';
 									else $colorbgfree = '#6F9DD6';
 									$farbe2 = substr($farbe2, 0, -7).$colorbgfree;
@@ -434,7 +434,7 @@
 							$class = 'class="er_overview_cell"';
 							$tableclick = 'onclick="document.getElementById(\'easy-table-search-field\').value = \''.implode(',', $datesHalfOccupied[$dateToday-$interval]['id']).'\';easyreservation_send_table(\'all\', 1);"';
 							if(isset($id) && in_array($id, $datesHalfOccupied[$dateToday-$interval]['id'])) $colorbgfree = '#FCEA74';
-							if(date("d.m.Y", $dateToday-$interval) == date("d.m.Y", time())) $colorbgfree = '#118D18';
+							if(date($date_pat, $dateToday-$interval) == date($date_pat, time())) $colorbgfree = '#118D18';
 							elseif($dateToday-$interval > time()) $colorbgfree = '#CC3333';
 							else $colorbgfree = '#2A78D8';
 						}
@@ -457,7 +457,7 @@
 						$class = 'class="er_overview_cell"';
 						$tableclick = 'onclick="document.getElementById(\'easy-table-search-field\').value = \''.implode(',', $datesHalfOccupied[$dateToday-$interval]['id']).'\';easyreservation_send_table(\'all\', 1);"';
 						if(isset($id) && in_array($id, $datesHalfOccupied[$dateToday-$interval]['id'])) $colorbgfree = '#FCEA74';
-						if(date("d.m.Y", $dateToday-$interval) == date("d.m.Y", time())) $colorbgfree = '#118D18';
+						if(date($date_pat, $dateToday-$interval) == date($date_pat, time())) $colorbgfree = '#118D18';
 						elseif($dateToday-$interval > time()) $colorbgfree = '#CC3333';
 						else $colorbgfree = '#2A78D8';
 					}
