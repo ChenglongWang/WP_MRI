@@ -250,7 +250,8 @@
 					$res_departure = $res_departure_stamp - (int) date("i", $res_departure_stamp);
 					$res_nights = ($res_departure_stamp - $res_adate_stamp) / $interval;
 					if(date($date_pat, $res_departure_stamp) == date($date_pat, $res_adate_stamp)){
-						$round = round((($res_adate + $res_departure-$interval)/2)/$interval) * $interval;
+					//	$round = round((($res_adate + $res_departure-$interval)/2)/$interval) * $interval;
+                                                $round = $res_adate;
 						if(isset($datesHalfOccupied[$round]['i'])) $datesHalfOccupied[$round]['i'] += 1;
 						else $datesHalfOccupied[$round]['i'] = 1;
 						if(isset($datesHalfOccupied[$round]['v'])) $datesHalfOccupied[$round]['v'] .= date('d.m H:i', $res_adate_stamp).' - '.date('d.m H:i', $res_departure_stamp).' <b>'.$res_name.'</b> (#'.$res_id.')<br>';
@@ -316,6 +317,7 @@
 					}
 					continue;
 				}
+                               
 				if(isset($daysOccupied)){//查看日期是否有安排
 					if(in_array(date($date_pat, $dateToday), $daysOccupied)){//查看今天是否有安排
 						if($numberOccupied[$CoutResNights3] != $CountNumberOfAdd && $cellcount != 1) $CountNumberOfAdd++;
