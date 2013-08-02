@@ -1,58 +1,148 @@
-/* 
-    Document   : style-index
-    Created on : 2013-7-27, 18:02:32
-    Author     : Ching
-    Description:
-        Purpose of the stylesheet follows.
+/*
+Theme Name: WP Bootstrap
+Description: A simple responsive theme built with Bootstrap
+Author: ChenglongWang
+Template: twentytwelve
+Version: 1.0
+Tags: responsive, white, bootstrap
 */
 
+@import url("../twentytwelve/style.css");
 @import url('bootstrap/css/bootstrap.css');
 @import url('bootstrap/css/bootstrap-responsive.css');
 @import url('bootstrap/css/hint.css');
 
- body
- {
-    padding-bottom: 40px;
-    color: #5a5a5a;
- }
-
- .navbar-fixed-top 
- {
-  margin-bottom: 0px;
- }
- 
-/* layout */
-.navbar a.avatar {
-	display: inline-block;
-	width: 25px;
-	height: 25px;
-	padding: 0 !important;
-}
-.navbar .avatar img {
-	width: 23px;
-	height: 23px;
-	margin: 8px 0 6px;
-	border: 1px solid #EEE;
-}
- #myCarousel
- {
-    margin-top:0px;
- }
-   .carousel-control 
-   { 
-    height: 80px;
-    margin-top: 0;
-    font-size: 120px;
-    text-shadow: 0 1px 1px rgba(0,0,0,.4);
-    background-color: transparent;
-    border: 0;
-    z-index: 10;
+   body 
+    {
+      padding-bottom: 10px;
+      color: #5a5a5a;
+    }
+    .container-fluid 
+    {
+    position:relative;
+    padding: 0;
+    height: 90px;
    }
-
-   <!-- 图片居中-->
-   .aligncenter 
-   {
+    .navbar-fixed-top 
+    {
+      position:relative;
+    margin-bottom: 0px;
+      margin-top:0px;  
+  }
+    .navbar-fixed-top .navbar-inner
+    {
+        min-height:44px;
+        border-width:0 0 0px;
+    }
+    .navbar-inner .container
+    {
+        height:46px;
+    } 
+    .container-fluid .container
+    {
+        height:90px;
+    }
+    .myCarousel
+    {
+      margin-top:0px;
+      background-color:snow;
+    }
+    .slide
+    {
+        margin-bottom:0px;
+    }
+     .carousel-control 
+     { 
+       height: 80px;
+       margin-top: 0;
+       font-size: 120px;
+       text-shadow: 0 1px 1px rgba(0,0,0,.4);
+       background-color: transparent;
+       border: 0;
+       z-index: 10;
+     }
+     .carousel-control.left
+     {
+         left:230px;
+         margin-top:-30px;
+     }
+     .carousel-control.right
+     {
+         right:230px;
+         margin-top:-30px;
+     }
+     .main-region
+     {
+         height:280px;
+         background-color:#dcd2d2;
+     }
+     .main-region .container
+     {
+         width:1170px;
+         height:280px;
+     }
+     .layout-column
+     {
+         padding-left:0px;
+         padding-right:10px;
+         display:block;
+         float:left;
+         color:rgb(102,102,102);
+         height:280px;
+         width:380px;
+         background-color:white;
+     }
+     
+     .sec-header
+     {
+         border-bottom:rgb(215,215,215) 1px solid;
+         height:44px;
+         line-height:44px;
+         margin-bottom:15px;
+         margin-top:10px;
+     }
+     .sec-articles-wrap
+     {
+         width:350px;
+         height:210px;
+         position:relative;
+         font-size:20px;
+     }
+     .sec-articles-wrap .btn
+     {
+          padding: 10.5px 12px;
+     }
+     <!-- 图片居中-->
+     .aligncenter 
+    {
       clear: both;
       display: block;
       margin:auto;
-   }
+    }
+    #footer
+    {
+        clear:both;
+        height:150px;
+        background-color:#dfe0c2;
+        
+    }
+    #footer .container
+     {
+         width:1170px;
+         height:150px;
+     }
+    .lab-address
+    {
+        padding-left:35px;
+        padding-top:20px;
+        display:block;
+        float:left;
+        width:530px;
+    }
+    .bottomlinks
+    {
+        padding-right:200px;
+        padding-top:40px;
+        display:block;
+        float:right;
+    }
