@@ -1,0 +1,58 @@
+/* 
+    Document   : style-index
+    Created on : 2013-7-27, 18:02:32
+    Author     : Ching
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+@import url('bootstrap/css/bootstrap.css');
+@import url('bootstrap/css/bootstrap-responsive.css');
+@import url('bootstrap/css/hint.css');
+
+ body
+ {
+    padding-bottom: 40px;
+    color: #5a5a5a;
+ }
+
+ .navbar-fixed-top 
+ {
+  margin-bottom: 0px;
+ }
+ 
+/* layout */
+.navbar a.avatar {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	padding: 0 !important;
+}
+.navbar .avatar img {
+	width: 23px;
+	height: 23px;
+	margin: 8px 0 6px;
+	border: 1px solid #EEE;
+}
+ #myCarousel
+ {
+    margin-top:0px;
+ }
+   .carousel-control 
+   { 
+    height: 80px;
+    margin-top: 0;
+    font-size: 120px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    background-color: transparent;
+    border: 0;
+    z-index: 10;
+   }
+
+   <!-- 图片居中-->
+   .aligncenter 
+   {
+      clear: both;
+      display: block;
+      margin:auto;
+   }
