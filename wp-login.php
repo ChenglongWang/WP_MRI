@@ -74,8 +74,8 @@ function login_header($title = 'Log In', $message = '', $wp_error = '') {
 		$login_header_url   = network_home_url();
 		$login_header_title = $current_site->site_name;
 	} else {
-		$login_header_url   = __( 'http://wordpress.org' );
-		$login_header_title = __( 'Powered by WordPress' );
+		$login_header_url   = __( 'http://www.fmri.ecnu.edu.cn/' );
+		$login_header_title = __( '上海磁共振重点实验室' );
 	}
 
 	$login_header_url   = apply_filters( 'login_headerurl',   $login_header_url   );
@@ -707,10 +707,10 @@ if(!is_user_logged_in()) {
 		<input type="hidden" name="testcookie" value="1" />
 	</p>
 </form>   
-<?php } else { ?>  
+<?php } else { ?>
         <form name="after_login" method ="post">
             <div align ="center" ><br/><br/><p><font size="6" face ="微软雅黑">欢迎回来,&nbsp<?php echo $current_user->user_login; ?> </font></p></div> <br/> <br/>     
-            <div align ="center"><br/><input type="button" class ="button" style =" background:blue;width: 160px; height:40px;color: white;font-family: 微软雅黑;font-size:15pt"  value ="登录成功，返回" onclick =" location.href = 'http://localhost/wpc'"></div>                  
+            <div align ="center"><br/><input type="button" class ="button" style =" background:#278ab7;width: 160px; height:40px;color: whitesmoke;font-family: 微软雅黑;font-size:14pt"  value ="登录成功，返回" onclick =" location.href = 'http://localhost/wpc'"></div>                  
         </form>                    
 
 <?php } ?>               
