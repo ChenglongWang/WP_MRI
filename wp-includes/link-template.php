@@ -2186,7 +2186,7 @@ function network_admin_url( $path = '', $scheme = 'admin' ) {
  * @return string Admin url link with optional path appended.
 */
 function user_admin_url( $path = '', $scheme = 'admin' ) {
-	$url = network_site_url('wp-admin/user/', $scheme); // wp-admin/user/
+	$url = network_site_url('wp-admin/user/', $scheme);
 
 	if ( !empty($path) && is_string($path) && strpos($path, '..') === false )
 		$url .= ltrim($path, '/');

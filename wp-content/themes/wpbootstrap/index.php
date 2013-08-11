@@ -100,25 +100,8 @@
         <h2 class="featurette-heading">First featurette headling. <span class="muted">It'll blow your mind.</span></h2>
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
       </div>
-
+    </div>
       <!-- /END THE FEATURETTES -->
     </div><!-- /.container -->
     
-    <script language="javascript">
-        function emailCheck()
-        {
-            var emailStr = document.all.LoginForm.email.value;
-            var emailPat = /^(.+)@(.+)$/;
-            var matchArray = emailStr.match(emailPat);
-            if (matchArray == null)
-            {
-                alert(emailStr + "电子邮件地址错误!")
-                $(".alert").alert('close')
-                return false;
-            }
-            else
-                return true;
-        }
-    </script>
- 
 <?php get_footer(); ?>

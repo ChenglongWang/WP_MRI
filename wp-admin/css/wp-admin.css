@@ -4861,7 +4861,11 @@ div#custom-background-image {
 }
 
 div#custom-background-image img {
+<<<<<<< HEAD
 	max-width: 500px;
+=======
+	max-width: 400px;
+>>>>>>> 0519836ecb9c809d1e85efa2d0936a6874e6aa1c
 	max-height: 300px;
 }
 
@@ -8477,7 +8481,11 @@ a.widget-control-edit {
 	}
 
 	.login h1 a {
+<<<<<<< HEAD
 		background-image: url('../images/wordpress-logo-2x.png?ver=20120216');
+=======
+		background-image: url('../images/wordpress-logo-2x.png?ver=20120412');
+>>>>>>> 0519836ecb9c809d1e85efa2d0936a6874e6aa1c
 		background-size: 274px 63px;
 	}
 

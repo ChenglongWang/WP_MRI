@@ -117,8 +117,8 @@ function reservation_main_page() {
 /* - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + EDIT RESERVATION BY ADMIN + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + */
 
 	if(isset($_POST['editthereservation']) && check_admin_referer( 'easy-main-edit', 'easy-main-edit' )){
-		if(isset($_POST['from-time-hour'])) $from_hour = ((int) $_POST['from-time-hour']*60)+(int) $_POST['from-time-min']; else $from_hour = 12*60;
-		if(isset($_POST['to-time-hour']))  $to_hour = ((int) $_POST['to-time-hour']*60)+(int) $_POST['to-time-min'] ;else $to_hour = 12*60;
+		if(isset($_POST['from-time-hour'])) $from_hour = ((int) $_POST['from-time-hour']*60)+(int) $_POST['from-time-min']; else $from_hour = 00*60; //origin 12*60
+		if(isset($_POST['to-time-hour']))  $to_hour = ((int) $_POST['to-time-hour']*60)+(int) $_POST['to-time-min'] ;else $to_hour = 23*60;
 
 		$customfields="";
 		for($theCount = 0; $theCount < 500; $theCount++){
@@ -152,7 +152,7 @@ function reservation_main_page() {
 			else $res->resourcenumber = 0;
 			$res->reservated = strtotime($_POST["reservation_date"]);
 			$res->arrival = (strtotime($_POST["date"])+($from_hour*60));
-			$res->departure = (strtotime($_POST["dateend"])+($to_hour*60));
+			$res->departure = (strtotime($_POST["dateend"])+($to_hour*60)); //离开时间.
 			if(!empty($customfields))	$res->Customs($customfields, true, false, false, 'cstm');
 			if(!empty($custompfields)) $res->Customs($custompfields, true, false, true, 'cstm');
 			$res = apply_filters('easy-edit-prices', $res);
@@ -190,9 +190,9 @@ function reservation_main_page() {
 /* - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + ADD RESERVATION BY ADMIN + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + */
 
 	if(isset($_POST['addreservation']) && check_admin_referer( 'easy-main-add', 'easy-main-add' )){
-		if(isset($_POST['from-time-hour'])) $from_hour = ((int) $_POST['from-time-hour']*60)+(int) $_POST['from-time-min']; else $from_hour = 12*60;
-		if(isset($_POST['to-time-hour']))  $to_hour = ((int) $_POST['to-time-hour']*60)+(int)$_POST['to-time-min'];else $to_hour = 12*60;
-
+		if(isset($_POST['from-time-hour'])) $from_hour = ((int) $_POST['from-time-hour']*60)+(int) $_POST['from-time-min']; else $from_hour = 00*60; //origin: 12*60
+		if(isset($_POST['to-time-hour']))  $to_hour = ((int) $_POST['to-time-hour']*60)+(int)$_POST['to-time-min'];else $to_hour = 23*60;
+                
 		$ADDcustomFields = '';
 		for($theCount = 0; $theCount < 100; $theCount++){
 			if(isset($_POST["customvalue".$theCount]) && isset($_POST["customtitle".$theCount])){
@@ -1138,7 +1138,7 @@ if(isset($edit)){
 			$thenumber0++;
 			$thenumber1++;
 			$customfields .= '<tr class="'.$class.'">';
-			$customfields .= '<td style="vertical-align:text-bottom;text-transform: capitalize;" nowrap><img style="vertical-align:text-bottom;" src="'.RESERVATIONS_URL.'/images/message.png"> <b>'.__($custom['title']).'</b> ('.$custom['mode'].') <a href="admin.php?page=reservations&edit='.$edit.'&deletecustomfield='.$key.'"><img style="vertical-align:middle;" src="'.RESERVATIONS_URL.'/images/delete.png"></a> <input type="hidden" name="customtitle'.$key.'" value="'.$custom['title'].'"></td>';
+			$customfields .= '<td style="vertical-align:text-bottom;text-transform: capitalize;" nowrap><img style="vertical-align:text-bottom;" src="'.RESERVATIONS_URL.'images/message.png"> <b>'.__($custom['title']).'</b> ('.$custom['mode'].') <a href="admin.php?page=reservations&edit='.$edit.'&deletecustomfield='.$key.'"><img style="vertical-align:middle;" src="'.RESERVATIONS_URL.'images/delete.png"></a> <input type="hidden" name="customtitle'.$key.'" value="'.$custom['title'].'"></td>';
 			$customfields .= '<td><input type="text" name="customvalue'.$key.'" value="'.$custom['value'].'"><input type="hidden" name="custommodus'.$key.'" value="'.$custom['mode'].'"></td></tr>';
 		}
 	}
@@ -1149,7 +1149,7 @@ if(isset($edit)){
 			$thenumber0++;
 			$thenumber2++;
 			$customfields .= '<tr class="'.$class.'">';
-			$customfields .= '<td style="vertical-align:text-bottom;text-transform:capitalize;" nowrap><img style="vertical-align:text-bottom;" src="'.RESERVATIONS_URL.'/images/money.png"> <b>'.__($customp['title']).'</b> ('.$customp['mode'].') <a href="admin.php?page=reservations&edit='.$edit.'&deletepricefield='.$key.'"><img style="vertical-align:middle;" src="'.RESERVATIONS_URL.'/images/delete.png"></a> <input type="hidden" name="customPtitle'.$key.'" value="'.$customp['title'].'"></td>';
+			$customfields .= '<td style="vertical-align:text-bottom;text-transform:capitalize;" nowrap><img style="vertical-align:text-bottom;" src="'.RESERVATIONS_URL.'images/money.png"> <b>'.__($customp['title']).'</b> ('.$customp['mode'].') <a href="admin.php?page=reservations&edit='.$edit.'&deletepricefield='.$key.'"><img style="vertical-align:middle;" src="'.RESERVATIONS_URL.'images/delete.png"></a> <input type="hidden" name="customPtitle'.$key.'" value="'.$customp['title'].'"></td>';
 			$customfields .= '<td><input type="text" name="customPvalue'.$key.'" value="'.$customp['value'].'" style="width:200px"><input type="text" name="custom_price'.$key.'" id="custom_price'.$key.'" onchange="easyreservations_send_price_admin();" value="'.$customp['amount'].'" style="width:70px;"> &'.RESERVATIONS_CURRENCY.';<input type="hidden" name="customPmodus'.$key.'" value="'.$customp['mode'].'"></td></tr>';
 		}
 	}
@@ -1203,12 +1203,18 @@ if(isset($edit)){
 							<td nowrap style="min-width:65%;width:65%"><input type="text" name="name" align="middle" value="<?php echo $res->name;?>"></td>
 						</tr>
 						<tr class="alternate">
-							<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/day.png"> <?php printf ( __( 'From' , 'easyReservations' ));?>:</td> 
-							<td><input type="text" id="datepicker" style="width:80px" name="date" value="<?php echo date(RESERVATIONS_DATE_FORMAT,$res->arrival); ?>" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(1);<?php }?>"> <select name="from-time-hour" id="from-time-hour" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(0);<?php }?>"><?php echo easyreservations_num_options("00",23,date("H",$res->arrival)); ?></select>:<select name="from-time-min"><?php echo easyreservations_num_options("00",59,date("i",$res->arrival)); ?></select></td>
+							<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/day.png"> <?php printf ( __( 'From' , 'easyReservations' ));?>:
+							<input type="text" id="datepicker" style="width:80px" name="date" value="<?php echo date(RESERVATIONS_DATE_FORMAT,$res->arrival); ?>" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(1);<?php }?>"> 
+                                                        <!--    <select name="from-time-hour" id="from-time-hour" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(0);<?php }?>"><?php echo easyreservations_num_options("00",23,date("H",$res->arrival)); ?></select>:
+                                                            <select name="from-time-min"><?php echo easyreservations_num_options("00",59,date("i",$res->arrival)); ?></select> -->
+                                               <!--         </td>
 						</tr>
-						<tr>
-							<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/to.png"> <?php printf ( __( 'To' , 'easyReservations' ));?>:</td> 
-							<td><input type="text" id="datepicker2" style="width:80px" name="dateend" value="<?php echo date(RESERVATIONS_DATE_FORMAT,$res->departure); ?>" onchange="easyreservations_send_price_admin();changer();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(2);<?php }?>"> <select name="to-time-hour" id="to-time-hour" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(0);<?php }?>"><?php echo easyreservations_num_options("00",23,date("H",$res->departure)); ?></select>:<select name="to-time-min"><?php echo easyreservations_num_options("00",59,date("i",$res->departure)); ?></select></td>
+						<tr> -->
+							<td><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/to.png"> <?php printf ( __( 'To' , 'easyReservations' ));?>:
+							<input type="text" id="datepicker2" style="width:80px" name="dateend" value="<?php echo date(RESERVATIONS_DATE_FORMAT,$res->departure); ?>" onchange="easyreservations_send_price_admin();changer();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(2);<?php }?>"> 
+                                                        <!--   <select type="hide" name="to-time-hour" id="to-time-hour" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(0);<?php }?>"><?php echo easyreservations_num_options("00",23,date("H",$res->departure)); ?></select>:
+                                                        <!--   <select type="hide" name="to-time-min"><?php echo easyreservations_num_options("00",59,date("i",$res->departure)); ?></select> -->
+                                                        </td>
 						</tr>
 						<tr class="alternate" id="easy_edit_persons">
 							<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/persons.png"> <?php echo __( 'Persons' , 'easyReservations' );?></td> 
@@ -1342,7 +1348,7 @@ get_the_select('<?php echo $res->resourcenumber; ?>', '<?php echo $res->resource
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if(isset($add)){
-	easyreservations_build_datepicker(1,array('datepicker','datepicker2', 'reservation_date'), 'd.m.Y');
+	easyreservations_build_datepicker(1,array('datepicker','datepicker2', 'reservation_date'), 'm/d/Y');
 	add_action('admin_print_footer_scripts','easyreservations_restrict_input_dash');
 ?> <!-- // Content will only show on edit Reservation -->
 	<script>
@@ -1399,22 +1405,30 @@ if(isset($add)){
 			<tbody>
 				<tr>
 					<td nowrap style="width:45%"><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/user.png"> <?php printf ( __( 'Name' , 'easyReservations' ));?></td> 
-					<td><input type="text" name="name" value="<?php if(isset($_POST['name'])) echo $_POST['name'];?>" align="middle"></td>
+					<td><input type="text" name="name" 
+                                                   value="<?php if(isset($_POST['name'])) echo $_POST['name'];?>" 
+                                                   onfocus="this.value='<?php global $current_user; get_currentuserinfo(); echo $current_user->display_name; ?>'"  
+                                                   align="middle"></td>
+                                        
 				</tr>
 				<tr class="alternate">
 					<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/day.png"> <?php printf ( __( 'From' , 'easyReservations' ));
 				//      Modified by ChenglongWang. to make a custom Reservation
-                                	if(isset($_POST['from-time-hour'])) $fromtimeh = $_POST['from-time-hour']; else $fromtimeh = 00;
-					if(isset($_POST['from-time-min'])) $fromtimem = $_POST['from-time-min']; else $fromtimem = 00;
+                                //	if(isset($_POST['from-time-hour'])) $fromtimeh = $_POST['from-time-hour']; else $fromtimeh = 00;
+				//	if(isset($_POST['from-time-min'])) $fromtimem = $_POST['from-time-min']; else $fromtimem = 00;
+                                        $fromtimeh = 00;
+                                        $fromtimem = 00;
 					?>:</td> 
 					<td><input type="text" id="datepicker" style="width:80px" name="date" value="<?php if(isset($_POST['date'])) echo $_POST['date']; ?>" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(1);<?php }?>"> 
                                         <!--<select name="from-time-hour" id="from-time-hour" onchange="easyreservations_send_price_admin();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(0);<?php }?>"><?php echo easyreservations_num_options("00",00,$fromtimeh); ?></select>点整-->
                                         <!--<select name="from-time-min"><?php echo easyreservations_num_options("00",59,$fromtimem); ?></select> -->    =>  
                                          
                                         <img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/to.png"> <?php printf ( __( 'To' , 'easyReservations' ));
-					if(isset($_POST['to-time-hour'])) $totimeh = $_POST['to-time-hour']; else $totimeh = 23;
-					if(isset($_POST['to-time-min'])) $totimem = $_POST['to-time-min']; else $totimem = 00;?>:
-                                        
+				//	if(isset($_POST['to-time-hour'])) $totimeh = $_POST['to-time-hour']; else $totimeh = 23;
+				//	if(isset($_POST['to-time-min'])) $totimem = $_POST['to-time-min']; else $totimem = 00;
+                                        $totimeh = 16;
+                                        $totimem = 00;
+                                        ?>:
                                         <input type="text" id="datepicker2" style="width:80px" name="dateend" value="<?php if(isset($_POST['dateend'])) echo $_POST['dateend']; ?>" onchange="easyreservations_send_price_admin();changer();<?php if($overview_options['overview_autoselect'] == 1){ ?>dofakeClick(2);<?php }?>">
                                         </td>
 			<!--	</tr> 
@@ -1448,7 +1462,10 @@ if(isset($add)){
 				</tr>
 				<tr  class="alternate" >
 					<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/email.png"> <?php printf ( __( 'Email' , 'easyReservations' ));?></td> 
-					<td><input type="text" name="email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" onchange="easyreservations_send_price_admin();"></td>
+					<td><input type="text" name="email" 
+                                                   value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" 
+                                                   onchange="easyreservations_send_price_admin();"
+                                                   onfocus="this.value='<?php global $current_user; get_currentuserinfo(); echo $current_user->user_email; ?>'"></td>
 				</tr>
 				<tr>
 					<td nowrap><img style="vertical-align:text-bottom;" src="<?php echo RESERVATIONS_URL; ?>images/country.png"> <?php printf ( __( 'Country' , 'easyReservations' ));  if(isset($_POST['country'])) $count = $_POST['country']; else $count = '';?></td> 

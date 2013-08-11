@@ -9,8 +9,8 @@
 
 
 	<!-- Le styles -->
-        <?php if(is_home()){ ?>
-        <link href="wp-content/themes/wpbootstrap/style-index.css" rel="stylesheet">
+        <?php wp_reset_query(); if(is_home() || is_front_page()){ ?>
+        <link href="/wpc/wp-content/themes/wpbootstrap/style-index.css" rel="stylesheet">
         <?php }else {?>
         <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
         <?php } ?>
@@ -40,7 +40,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-            <a class="brand hint--bottom hint--success" data-hint="欢迎来到我们的实验室!" href="<?php bloginfo('url') ?>"><?php bloginfo('name') ?></a>
+            <a class="brand hint--bottom hint--success" data-hint="欢迎来到我们的实验室!" href="<?php echo get_home_url() ?>"><?php bloginfo('name') ?></a>
          <div class="nav-collapse collapse">
  <!--   <ul class="nav">-->
               <?php 
@@ -69,4 +69,4 @@
       </div>
     </div>
       
- <!--   <div class="container"> -->
+   <div class="container">

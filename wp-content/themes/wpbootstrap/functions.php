@@ -69,7 +69,8 @@ function my_login_redirect( $redirect_to, $request, $user ){
 add_action( 'login_form', 'username_or_email_login' );
 add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 add_action( 'after_setup_theme', 'remove_admin_bar');
-add_filter("login_redirect", "my_login_redirect", 10, 3);
+add_filter( "login_redirect", "my_login_redirect", 10, 3);
+
 
 if ( function_exists('register_sidebar') )
 	register_sidebar(array(
@@ -87,6 +88,4 @@ if(function_exists('register_nav_menus'))
         'header-menu' => __( 'topnav' )
     ) );
 }
-
 ?>
-

@@ -676,7 +676,8 @@
 			else $childs = 0;
 			if(isset($_POST['to'])) $departure = strtotime($_POST['to']);
 			else $departure = $arrival + $the_rooms_intervals_array[$_POST['easyroom']];
-			if(isset($_POST['nights'])) $departure = $arrival+((int) $_POST['nights'] * $the_rooms_intervals_array[$_POST['easyroom']]);
+                   //   防止夜晚离开时间增加
+                   //   if(isset($_POST['nights'])) $departure = $arrival+((int) $_POST['nights'] * $the_rooms_intervals_array[$_POST['easyroom']]);
 			if(isset($_POST['country'])) $country=$_POST['country'];
 			else $country = "";
 			if(isset($_POST['easyroom'])) $room = $_POST['easyroom'];
@@ -688,10 +689,10 @@
 			if(isset($_POST['date-from-min'])) $arrivalplus += (int) $_POST['date-from-min'];
 			if($arrivalplus > 0) $arrivalplus = $arrivalplus * 60;
 			$departureplus = 0;
-			if(isset($_POST['date-to-hour'])) $departureplus += (int) $_POST['date-to-hour'] * 60;
-			else $departureplus += 12*60;
-			if(isset($_POST['date-to-min'])) $departureplus += (int) $_POST['date-to-min'];
-			if($departureplus > 0) $departureplus = $departureplus*60;
+		//	if(isset($_POST['date-to-hour'])) $departureplus += (int) $_POST['date-to-hour'] * 60;
+		//	else $departureplus += 12*60;
+		//	if(isset($_POST['date-to-min'])) $departureplus += (int) $_POST['date-to-min'];
+		//	if($departureplus > 0) $departureplus = $departureplus*60;
 			$arrival += $arrivalplus;
 			$departure += $departureplus;
 			$custom_form='';

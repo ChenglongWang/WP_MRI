@@ -278,7 +278,7 @@ if(isset($_GET['page'])){
 				if(isset($_POST['overview_show_days'])) $overview_show_days = $_POST['overview_show_days']; else $overview_show_days = 30;
 				if(isset($_POST['overview_show_rooms'])) $overview_show_rooms = implode(",", $_POST['overview_show_rooms']); else $overview_show_rooms = '';
 				if(isset($_POST['overview_show_avail'])) $overview_show_avail = 1; else $overview_show_avail = 0;
-				if(isset($_POST['overview_hourly_stand'])) $overview_hourly_stand = 1; else $overview_hourly_stand = 0;
+				if(isset($_POST['overview_hourly_stand'])) $overview_hourly_stand = 0; else $overview_hourly_stand = 0; //hour display invalid
 
 				$overview = array( 'overview_onmouseover' => $overview_onmouseover, 'overview_autoselect' => $overview_autoselect, 'overview_show_days' => $overview_show_days, 'overview_show_rooms' => $overview_show_rooms, 'overview_show_avail' => $overview_show_avail, 'overview_hourly_stand' => $overview_hourly_stand );
 
@@ -868,16 +868,20 @@ if(isset($_GET['page'])){
 						</td>
 						<td class="<?php echo $sta; ?>" style="padding-left:0px;padding-right:0px;width:70px;white-space: nowrap;">
 							<div style="margin-bottom:5px;">
-								<span style="color:#444;font-weight: bold;font-size:15px;"><?php echo date('d', $res->arrival); ?></span>
-								<span style="color:#777;font-weight: bold;font-size: 13px;"><?php echo date('M', $res->arrival); ?></span>
+								<span style="color:#19a8f6;font-weight: bold;font-size:15px;"><?php echo date('d', $res->arrival); ?></span>
+								<span style="color:#777;font-weight: bold;font-size: 14px;"><?php echo date('M', $res->arrival); ?></span>
 								<?php if($year){ ?><span style="color:#777;font-weight: bold;font-size: 14px;"><?php echo date('Y', $res->arrival); ?></span><?php } ?>
-								<?php if(RESERVATIONS_USE_TIME == 1){ ?><span style="color:#999;font-weight: bold;font-size: 11px;"><?php echo date('H:i', $res->arrival); ?></span><?php } ?>
+								<?php if(RESERVATIONS_USE_TIME == 1){ ?>
+                                                                    <span style="color:#999;font-weight: bold;font-size: 11px;">ID: #<?php echo $res->id; ?></span>
+                                                                <?php } ?>
 							</div>
 							<div>
-								<span style="color:#444;font-weight: bold;font-size: 15px;"><?php echo date('d', $res->departure); ?></span>
+								<span style="color:#19a8f6;font-weight: bold;font-size: 15px;"><?php echo date('d', $res->departure); ?></span>
 								<span style="color:#777;font-weight: bold;font-size: 13px;"><?php echo date('M', $res->departure); ?></span>
 								<?php if($year){ ?><span style="color:#777;font-weight: bold;font-size: 14px;"><?php echo date('Y', $res->departure); ?></span><?php } ?>
-								<?php if(RESERVATIONS_USE_TIME == 1){ ?><span style="color:#999;font-weight: bold;font-size: 11px;"><?php echo date('H:i', $res->departure); ?></span><?php } ?>
+							<!--	<?php if(RESERVATIONS_USE_TIME == 1){ ?>
+                                                                    <span style="color:#999;font-weight: bold;font-size: 11px;"><?php echo date('H:i', $res->departure); ?></span>
+                                                                <?php } ?>-->
 							</div>
 						</td>
 					<?php } if($table_options['table_name'] == 1 || $table_options['table_id'] == 1){ ?>
