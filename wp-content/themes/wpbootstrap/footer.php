@@ -25,8 +25,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-<!--    <script src="../assets/js/jquery.js"></script> -->
-<!--    <script src="../assets/js/bootstrap.js"></script> -->
+    <script src="/wpc/wp-content/themes/wpbootstrap/bootstrap/js/jquery.js"></script>
+    <script src="/wpc/wp-content/themes/wpbootstrap/bootstrap/js/bootstrap.js"></script>
 
 	<?php wp_footer(); ?> 
   </body>
