@@ -63,7 +63,6 @@ function login_header($title = 'Log In', $message = '', $wp_error = '') {
 
 	wp_admin_css( 'wp-admin', true );
 	wp_admin_css( 'colors-fresh', true );
-
 	if ( wp_is_mobile() ) { ?>
 		<meta name="viewport" content="width=320; initial-scale=0.9; maximum-scale=1.0; user-scalable=0;" /><?php
 	}
@@ -75,8 +74,8 @@ function login_header($title = 'Log In', $message = '', $wp_error = '') {
 		$login_header_url   = network_home_url();
 		$login_header_title = $current_site->site_name;
 	} else {
-		$login_header_url   = __( 'http://wordpress.org/' );
-		$login_header_title = __( 'Powered by WordPress' );
+		$login_header_url   = __( 'http://www.fmri.ecnu.edu.cn/' );
+		$login_header_title = __( '上海磁共振重点实验室' );
 	}
 
 	$login_header_url   = apply_filters( 'login_headerurl',   $login_header_url   );
@@ -96,7 +95,7 @@ function login_header($title = 'Log In', $message = '', $wp_error = '') {
 	</head>
 	<body class="login <?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<div id="login">
-		<h1><a href="<?php echo esc_url( $login_header_url ); ?>" title="<?php echo esc_attr( $login_header_title ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+                <h1><a href="<?php echo esc_url( $login_header_url ); ?>" title="<?php echo esc_attr( $login_header_title ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 	<?php
 
 	unset( $login_header_url, $login_header_title );
@@ -126,8 +125,9 @@ function login_header($title = 'Log In', $message = '', $wp_error = '') {
 		if ( !empty($errors) )
 			echo '<div id="login_error">' . apply_filters('login_errors', $errors) . "</div>\n";
 		if ( !empty($messages) )
-			echo '<p class="message">' . apply_filters('login_messages', $messages) . "</p>\n";
-	}
+		echo '<p class="message">' . apply_filters('login_messages', $messages) . "</p>\n";
+	} ?>
+  <?php
 } // End of login_header()
 
 /**
@@ -135,10 +135,14 @@ function login_header($title = 'Log In', $message = '', $wp_error = '') {
  *
  * @param string $input_id Which input to auto-focus
  */
+
+
 function login_footer($input_id = '') {
+    
 	global $interim_login;
 
 	// Don't allow interim logins to navigate away from the page.
+
 	if ( ! $interim_login ): ?>
 	<p id="backtoblog"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( 'Are you lost?' ); ?>"><?php printf( __( '&larr; Back to %s' ), get_bloginfo( 'title', 'display' ) ); ?></a></p>
 	<?php endif; ?>
@@ -148,7 +152,7 @@ function login_footer($input_id = '') {
 	<?php if ( !empty($input_id) ) : ?>
 	<script type="text/javascript">
 	try{document.getElementById('<?php echo $input_id; ?>').focus();}catch(e){}
-	if(typeof wpOnload=='function')wpOnload();
+	if(typeof wpOnload == 'function')wpOnload();
 	</script>
 	<?php endif; ?>
 
@@ -433,7 +437,7 @@ case 'retrievepassword' :
 ?>
 
 <form name="lostpasswordform" id="lostpasswordform" action="<?php echo esc_url( site_url( 'wp-login.php?action=lostpassword', 'login_post' ) ); ?>" method="post">
-	<p>
+    <p>
 		<label for="user_login" ><?php _e('Username or E-mail:') ?><br />
 		<input type="text" name="user_login" id="user_login" class="input" value="<?php echo esc_attr($user_login); ?>" size="20" /></label>
 	</p>
@@ -585,14 +589,15 @@ default:
 		}
 	}
 
+        
 	if ( isset( $_REQUEST['redirect_to'] ) ) {
 		$redirect_to = $_REQUEST['redirect_to'];
 		// Redirect to https if user wants ssl
 		if ( $secure_cookie && false !== strpos($redirect_to, 'wp-admin') )
 			$redirect_to = preg_replace('|^http://|', 'https://', $redirect_to);
 	} else {
-		$redirect_to = admin_url();
-	}
+                    $redirect_to = admin_url();
+	}  
 
 	$reauth = empty($_REQUEST['reauth']) ? false : true;
 
@@ -621,10 +626,12 @@ default:
 			<?php if ( $customize_login ) : ?>
 				<script type="text/javascript">setTimeout( function(){ new wp.customize.Messenger({ url: '<?php echo wp_customize_url(); ?>', channel: 'login' }).send('login') }, 1000 );</script>
 			<?php endif; ?>
+
 			</body></html>
 <?php		exit;
 		}
-
+                ?>
+<?php 
 		if ( ( empty( $redirect_to ) || $redirect_to == 'wp-admin/' || $redirect_to == admin_url() ) ) {
 			// If the user doesn't belong to a blog, send them to user admin. If the user can't edit posts, send them to their profile.
 			if ( is_multisite() && !get_active_blog_for_user($user->ID) && !is_super_admin( $user->ID ) )
@@ -673,8 +680,10 @@ default:
 		$user_login = ( 'incorrect_password' == $errors->get_error_code() || 'empty_password' == $errors->get_error_code() ) ? esc_attr(stripslashes($_POST['log'])) : '';
 	$rememberme = ! empty( $_POST['rememberme'] );
 ?>
-
-<form name="loginform" id="loginform" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
+<?php 
+if(!is_user_logged_in()) {
+    ?>
+<form name="loginform" id="loginform" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">    
 	<p>
 		<label for="user_login"><?php _e('Username') ?><br />
 		<input type="text" name="log" id="user_login" class="input" value="<?php echo esc_attr($user_login); ?>" size="20" /></label>
@@ -697,8 +706,14 @@ default:
 <?php   endif; ?>
 		<input type="hidden" name="testcookie" value="1" />
 	</p>
-</form>
+</form>   
+<?php } else { ?>
+        <form name="after_login" method ="post">
+            <div align ="center" ><br/><br/><p><font size="6" face ="微软雅黑">欢迎回来,&nbsp<?php echo $current_user->user_login; ?> </font></p></div> <br/> <br/>     
+            <div align ="center"><br/><input type="button" class ="button" style =" background:#278ab7;width: 160px; height:40px;color: whitesmoke;font-family: 微软雅黑;font-size:14pt"  value ="登录成功，返回" onclick =" location.href = 'http://localhost/wpc'"></div>                  
+        </form>                    
 
+<?php } ?>               
 <?php if ( !$interim_login ) { ?>
 <p id="nav">
 <?php if ( isset($_GET['checkemail']) && in_array( $_GET['checkemail'], array('confirm', 'newpass') ) ) : ?>
