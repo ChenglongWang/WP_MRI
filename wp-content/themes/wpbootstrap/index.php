@@ -1,14 +1,13 @@
 <?php get_header(); ?>
  
-       <!-- Main hero unit for a primary marketing message or call to action -->
-      <!--==========轮播===========
-            -->
-  <div id="myCarousel">
-   <div class="container">
-	<div class="row-fluid">
+   <!--==========轮播===========-->
+   <div class = "myCarousel" >
+     <div class="container">
+	  <div class="row-fluid">
 		<div class="span12">
-			<div class="carousel slide" id="carousel-833022">
-				<ol class="carousel-indicators">
+			<div class="slide"  id = "carousel-833022">
+                <!-- 分成三部分 -->
+				<ol class="carousel-indicators" style = "top:160px; right:260px">
 					<li data-slide-to="0" data-target="#carousel-833022">
 					</li>
 					<li data-slide-to="1" data-target="#carousel-833022">
@@ -17,9 +16,10 @@
 					</li>
 				</ol>
 				<div class="carousel-inner">
+                   <!--  每一部分的图片与说明 -->
 					<div class="item active">
-                         <!-- item next left -->
-						<img alt=""  class="aligncenter" src="wp-content/uploads/img/slide-01.jpg" />
+                         <!-- item next left item active -->
+						<img alt=""  class="aligncenter" src="/wpc/wp-content/uploads/img/slide-01.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								棒球
@@ -31,7 +31,7 @@
 					</div>
 					<div class="item">
                         <!-- item  -->
-						<img alt="" class="aligncenter" src="wp-content/uploads/img/slide-03.jpg" />
+						<img alt="" class="aligncenter" src="/wpc/wp-content/uploads/img/slide-02.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								冲浪
@@ -41,9 +41,9 @@
 							</p>
 						</div>
 					</div>
-					<div class="item t">
+					<div class="item">
                          <!-- item next left -->
-						<img alt="" class="aligncenter" src="wp-content/uploads/img/slide-02.jpg" />
+						<img alt="" class="aligncenter" src="/wpc/wp-content/uploads/img/slide-03.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								自行车
@@ -53,7 +53,9 @@
 							</p>
 						</div>
 					</div>
-				</div> <a data-slide="prev" href="#carousel-833022" class="left carousel-control">&lsaquo;</a> <a data-slide="next" href="#carousel-833022" class="right carousel-control">&rsaquo;</a>
+				</div> 
+                <a data-slide="prev" href="#carousel-833022" class="left carousel-control" >&lsaquo;</a>
+                <a data-slide="next" href="#carousel-833022" class="right carousel-control">&rsaquo;</a>
 			</div>
 		</div>
 	</div>
@@ -64,44 +66,49 @@
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-       <div class="span4">
-          
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-
-        <div class="span4"> 
-         
-          <h2>Heading</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-        
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-      </div><!-- /.row -->
-
-
-      <!-- START THE FEATURETTES -->
-
-     
-
-      <div class="featurette">
-        <img class="featurette-image pull-right" src="wp-content/uploads/img/browser-icon-chrome.png">
-        <h2 class="featurette-heading">First featurette headling. <span class="muted">It'll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    <div class ="main-region">
+      <div class="container">
+        <!-- Three columns of text below the carousel -->
+        <div class="layout-column">  
+            <div class ="sec-header">
+                <h3>热点新闻</h3>              
+            </div> 
+            <div class ="sec-articles-wrap">
+            <?php $recentPosts = new WP_Query( array('category_name' => 'news', 'showposts' => 5 ) ); ?>  
+                <ul>  
+                    <?php while ( $recentPosts->have_posts()) : $recentPosts->the_post(); ?>  
+                    <li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></li>  
+                    <?php endwhile;?>  
+                 </ul>  
+                <p style ="position:absolute;bottom:0;right:0"><a class="btn" href="http://news.ecnu.edu.cn/" target = "_blank">更多新闻 &raquo;</a></p>
+            </div>          
+        </div>
+        <div class = "layout-column">  
+            <div class = "sec-header">
+                <h3>学术报告</h3>
+            </div> 
+            <div class ="sec-articles-wrap">
+                <ul>
+                	<li>Structural Analysis of Biological Supramolecular Systems by CP/MAS Solid-State NMR</li>
+                    <li>核磁共振谱仪的数字化研究</li>
+                    <li>高级核磁共振技术在功能材料中的应用</li>
+                    <li>Task or Rest State BOLD fMRI in Clinical Applications</li>
+                </ul>
+                <p style="font-size: 20px; float: right;position:absolute;bottom:0;right:0"><a class="btn" href="http://lectures.ecnu.edu.cn/" target="_blank">更多讲座报告 &raquo;</a></p>
+            </div>
+         </div>      
+         <div class="layout-column">    
+            <div class ="sec-header">
+                <h3>快速通道</h3>
+            </div>
+            <ul>
+            	<li><a href="http://news.ecnu.edu.cn/" target = "_blank"><p style ="font-size:20px; color:#666">固体实验预约</p></a></li>
+                <li><a href="http://news.ecnu.edu.cn/" target = "_blank"><p style ="font-size:20px; color:#666">液体实验预约</p></a></li>
+                <li><a href="http://news.ecnu.edu.cn/" target = "_blank"><p style ="font-size:20px; color:#666">动物实验预约</p></a></li>
+                <li><a href="http://news.ecnu.edu.cn/" target = "_blank"><p style ="font-size:20px; color:#666">人体实验预约</p></a></li>
+            </ul>
+         </div><!-- /.row -->
+       </div>
       </div>
-    </div>
-      <!-- /END THE FEATURETTES -->
-    </div><!-- /.container -->
     
 <?php get_footer(); ?>
