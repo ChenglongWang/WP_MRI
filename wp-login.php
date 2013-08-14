@@ -709,8 +709,8 @@ if(!is_user_logged_in()) {
 </form>   
 <?php } else { ?>
         <form name="after_login" method ="post">
-            <div align ="center" ><br/><br/><p><font size="6" face ="微软雅黑">欢迎回来,&nbsp<?php echo $current_user->user_login; ?> </font></p></div> <br/> <br/>     
-            <div align ="center"><br/><input type="button" class ="button" style =" background:#278ab7;width: 160px; height:40px;color: whitesmoke;font-family: 微软雅黑;font-size:14pt"  value ="登录成功，返回" onclick =" location.href = 'http://localhost/wpc'"></div>                  
+            <div align ="center" ><br/><br/><p><font size="5" face ="微软雅黑">欢迎回来,&nbsp<?php echo $current_user->user_login; ?> </font></p></div> <br/> <br/>     
+            <div align ="center"><br/><input type="button" class ="button" style =" background:#278ab7;width: 160px; height:40px;color: whitesmoke;font-family: 微软雅黑;font-size:13pt"  value ="登录成功，返回" onclick =" window.location.href = '<?php echo get_home_url(); ?>' "></div>                  
         </form>                    
 
 <?php } ?>               
