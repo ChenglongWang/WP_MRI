@@ -53,16 +53,30 @@
               ?> 
  <!--        </ul>-->
               <?php if(!( is_user_logged_in())){?>
-                  <form name="LoginForm" class="navbar-form pull-right" action="<?php echo get_option('home'); ?>/wp-login.php" method="post">
-                    <input class="span2" type="text" name="log" id="log" value="<?php echo wp_specialchars(stripslashes($user_login), 1) ?>" placeholder="Email/Name">
-                    <input class="span2" type="password" name="pwd" id="pwd" placeholder="Password"> 
-                    <button type="submit" class="btn btn-primary hint--bottom hint--info" data-hint="点这里登录哟!">Sign in</button>
+                <ul class="nav pull-right">
+                    <li class="dropdown" data-dropdown="dropdown">
+                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown"> <font face ="微软雅黑">登录</font>
+                            <b class="caret"></b>
+                            </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class=" hint--right hint--info" data-hint="点这里登录哟!" href="<?php echo get_home_url();?>/wp-login.php"><i class="icon-user"></i>&nbsp;登录</a>
+                                </li>
+                                <li>
+                                    <a class=" hint--right hint--info" data-hint="点这里注册哟!" href="<?php echo get_home_url();?>/wpc/wp-login.php?action=register"><i class="icon-user"></i>&nbsp;注册</a>
+                                </li>
+                                </ul>                  
+                               </ul> 
                <!--     <input type="submit" value="Sign in" class="btn btn-primary"> onclick="return emailCheck()"-->
-                  </form>
+                
               <?php }else { ?>
-                  <a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class="btn btn-primary pull-right hint--error hint--bottom" data-hint="再见咯!">Logout</a>
-                  <li><a class="pull-right" href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
-                  </a></li>    
+                  <ul class="nav pull-right">
+                      <li class="divider-vertical"></li>                    
+                
+                  <li><a href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
+                  </a></li> 
+                 <li> <a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class="btn btn-primary pull-right hint--error hint--bottom" data-hint="再见咯!"><font color="white">Logout</font></a><li>
+                  </ul>
               <?php }?>
          </div><!--/.nav-collapse -->
         </div>
