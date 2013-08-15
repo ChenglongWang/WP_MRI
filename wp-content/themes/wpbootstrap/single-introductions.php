@@ -23,7 +23,11 @@ if (have_posts()) {
         'fullName' => $args[0][0]['firstname'].$args[0][0]['lastname'],
         'tags' => $args[0][0]['tags'],
         'email' => $args[0][0]['email'],
-        'cellphone' => $args[0][0]['cellphone']
+        'cellphone' => $args[0][0]['cellphone'],
+        'achievements' => $args[0][0]['achievements'],
+        'website' => $args[0][0]['homepage'],
+        'researchFields' => $args[0][0]['researchfields'],
+        'address' => $args[0][0]['address']
     );
     $page_title = get_the_title();
     
@@ -45,14 +49,16 @@ else {
         <title><?php echo $page_title ?></title>
         
         <!-- Our CSS stylesheet file -->
+
+        <link href="<?php echo get_home_url() ?>/wpc/wp-content/themes/wpbootstrap/bootstrap/css/bootstrap.css" rel="stylesheet" >
+        <link href="<?php echo get_home_url() ?>/wpc/wp-content/themes/wpbootstrap/bootstrap/Buttons/css/buttons.css" rel="stylesheet" >
         <link href="<?php echo get_home_url() ?>/wpc/wp-content/themes/wpbootstrap/about/assets/css/styles.css" rel="stylesheet" >
-        
         <!--[if lt IE 9]>
           <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     </head>
     
-    <body>  
+    <body>
         <section id="infoPage">
             <img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())) ?>" alt="<?php echo $profile['fullName'] ?>" width="164" />
 
@@ -61,27 +67,51 @@ else {
                 <h2><?php echo $profile['tags'] ?></h2>
             </header>
 
-            <h3>简介</h3>
+            <nobr class="subtitle">科研方向:</nobr> 
+            <nobr class="data">
+                <?php echo $profile['researchFields'] ?>
+            </nobr>
+            
+            <table style="width:100%; margin:5px -1px">
+                <tr>
+                    <td width="50%"><nobr class="subtitle">电话: </nobr>
+                        <nobr class="data"><?php echo $profile['cellphone'] ?></nobr>
+                    </td>
+                    <td width="50%"><nobr class="subtitle">地址: </nobr>
+                        <nobr class="data"><?php echo $profile['address'] ?></nobr>
+                    </td>
+                </tr>
+            </table>
+            
+            <p class="subtitle">简介</p>
             <p class="description">
                 <?php while (have_posts()) : the_post();
                    echo get_the_content(); endwhile;?>
             </p>
-
-            <a href="<?php echo $profile['email'] ?>" class="grayButton facebook">Find me on Facebook</a>
-            <a href="<?php echo $profile['cellphone'] ?>" class="grayButton twitter">Follow me on Twitter</a>
-
+            <h3 class="subtitle">科研成果</h3>
+            <p class="description">
+                <?php echo $profile['achievements'] ?>
+            </p>           
+            
+           <a href="mailto:<?php echo $profile['email'] ?>" class="grayButton facebook">Email me</a>
+           <a href="<?php echo $profile['website'] ?>" class="grayButton twitter">Visit my homepage.</a>
+            
             <ul class="vcard">
                 <li class="fn"><?php echo $profile['fullName'] ?></li>
                 <li class="org"><?php echo $profile['tags'] ?></li>
                 <li class="tel"><?php echo $profile['cellphone'] ?></li>
                 <li><a class="url" href="<?php echo 1?>"><?php echo 1 ?></a></li>
             </ul>
-
-        </section>
-
-        <section id="links">
-            <a href="?vcard" class="vcard">Download as V-Card</a>
         </section>
         
-<?php get_footer(); ?>
 
+        <section id="links">
+            <center>
+                <h2><a href="<?php echo get_home_url() ?>/teachers/"><b>←BACK</b>           
+                    </a></h2>
+            </center>
+            <a href="?vcard" class="vcard">下载电子名片</a>
+        </section>
+        
+
+<?php get_footer() ?>
