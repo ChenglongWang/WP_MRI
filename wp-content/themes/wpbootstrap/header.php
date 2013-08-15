@@ -72,11 +72,14 @@
                 
               <?php }else { ?>
                   <ul class="nav pull-right">
-                      <li class="divider-vertical"></li>                    
+                  <li class="divider-vertical"></li>                    
                 
-                  <li><a href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
-                  </a></li> 
-                 <li> <a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class="btn btn-primary pull-right hint--error hint--bottom" data-hint="再见咯!"><font color="white">Logout</font></a><li>
+                  <li>
+                      <a href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 25);?></a>
+                  </li> 
+                  <li>
+                      <a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class="btn btn-primary hint--error hint--bottom" data-hint="再见咯!"><font color="white">Logout</font></a>
+                  <li>
                   </ul>
               <?php }?>
          </div><!--/.nav-collapse -->
