@@ -36,8 +36,7 @@ else {
     $profile = $info;
     $page_title = "Personal Introduction";
 }
-
-       
+     
 ?>
 
 <!DOCTYPE html>
@@ -94,8 +93,8 @@ else {
             </p>           
             
            <a href="mailto:<?php echo $profile['email'] ?>" class="grayButton facebook">Email me</a>
-           <a href="<?php echo $profile['website'] ?>" class="grayButton twitter">Visit my homepage.</a>
-            
+           <a href="http://<?php echo $profile['website'] ?>" class="grayButton twitter">Visit my homepage.</a>
+           
             <ul class="vcard">
                 <li class="fn"><?php echo $profile['fullName'] ?></li>
                 <li class="org"><?php echo $profile['tags'] ?></li>

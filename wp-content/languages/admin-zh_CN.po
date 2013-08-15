@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WordPress 3.5.2\n"
 "Report-Msgid-Bugs-To: http://wppolyglots.wordpress.com\n"
 "POT-Creation-Date: 2013-06-21 18:14:21+00:00\n"
-"PO-Revision-Date: 2013-06-22 00:52-0000\n"
+"PO-Revision-Date: 2013-08-15 20:36+0800\n"
 "Last-Translator: Jimmy Xu <me@jimmyxu.org>\n"
 "Language-Team: WordPress China\n"
 "Language: zh_CN\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #: wp-admin/about.php:20 wp-admin/credits.php:53 wp-admin/freedoms.php:20
 msgid "Welcome to WordPress %s"
@@ -1272,7 +1272,7 @@ msgstr "属性"
 
 #: wp-admin/edit-form-advanced.php:136
 msgid "Featured Image"
-msgstr "特色图像"
+msgstr "特色图像(缩略图)"
 
 #: wp-admin/edit-form-advanced.php:142
 msgid "Send Trackbacks"
@@ -4439,8 +4439,8 @@ msgstr "允许使用"
 
 #: wp-admin/includes/dashboard.php:1146
 msgid ""
-"<a href=\"%1$s\" title=\"Manage Uploads\" class=\"musublink\">%2$sMB (%3$s%"
-"%)</a>"
+"<a href=\"%1$s\" title=\"Manage Uploads\" class=\"musublink\">%2$sMB (%3$s%%)"
+"</a>"
 msgstr ""
 "<a href=\"%1$s\" title=\"管理文件上传\" class=\"musublink\">%2$sMB (%3$s%%)</"
 "a>"
@@ -6927,7 +6927,7 @@ msgstr "顶部特色图像"
 
 #: wp-admin/includes/theme.php:195
 msgid "Featured Images"
-msgstr "特色图像"
+msgstr "特色图像(缩略图)"
 
 #: wp-admin/includes/theme.php:196
 msgid "Flexible Header"
@@ -9710,8 +9710,8 @@ msgid ""
 "other plugins. Sometimes, though, a plugin&#8217;s code will get in the way "
 "of another plugin, causing compatibility issues. If your site starts doing "
 "strange things, this may be the problem. Try deactivating all your plugins "
-"and re-activating them in various combinations until you isolate which "
-"one(s) caused the issue."
+"and re-activating them in various combinations until you isolate which one"
+"(s) caused the issue."
 msgstr ""
 "通常每个插件都能和其他插件以及 WordPress 核心程序正常工作。但是，有的时候某些"
 "插件会和其他插件相冲突，进而产生兼容性问题。如果您的站点工作异常，可能是这个"
