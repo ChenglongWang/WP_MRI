@@ -31,7 +31,7 @@
 					</div>
 					<div class="item">
                         <!-- item  -->
-						<img alt="" class="aligncenter" src="/wpc/wp-content/uploads/img/slide-02.jpg" />
+						<img alt="" class="aligncenter" src="/wpc/wp-content/uploads/2013/08/DSC00082-300x168.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								冲浪

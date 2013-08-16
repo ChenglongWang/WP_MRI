@@ -6,6 +6,7 @@
                 <?php while ( $recentPosts->have_posts()) : $recentPosts->the_post(); ?>  
                    <li><img class="aligncenter" src="<?php echo get_content_first_image(get_the_content()); ?>" title="<?php the_title_attribute(); ?>" /></li>
                     <?php endwhile;?>  
+
            </ul>
     <!-- Marketing messaging and featurettes
     ================================================== -->

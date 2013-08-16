@@ -119,12 +119,18 @@ Tags: responsive, white, bootstrap
       display: block;
       margin:auto;
     }
+    .bxslider .aligncenter
+    {
+      clear: none;
+      display: block;
+      margin: auto;
+    }
+    
     #footer
     {
         clear:both;
         height:150px;
         background-color:#dfe0c2;
-        
     }
     #footer .container
      {
