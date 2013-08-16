@@ -1,0 +1,71 @@
+/*
+Theme Name: WP Bootstrap
+Description: A simple responsive theme built with Bootstrap
+Author: ChenglongWang
+Template: twentytwelve
+Version: 1.0
+Tags: responsive, white, bootstrap
+*/
+
+@import url("../twentytwelve/style.css");
+@import url('bootstrap/css/bootstrap.css');
+@import url('bootstrap/css/bootstrap-responsive.css');
+@import url('bootstrap/css/hint.css');
+
+
+*{
+	margin:0;
+	padding:0;
+}
+
+/*html{
+	background: url('bootstrap/img/bg_tile.jpg') #383839;
+	background-attachment: fixed;
+}*/
+
+body {
+	color:#fcfcfc;
+	font:14px/1.3 'Segoe UI Light',Arial, sans-serif;
+	min-height: 800px;
+	padding-top:10px;
+	background:url('bootstrap/img/bg_center.jpg') center center repeat;
+}
+/* layout */
+.navbar a.avatar {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	padding: 0 !important;
+}
+.navbar .avatar img {
+	width: 23px;
+	height: 23px;
+	margin: 8px 0 6px;
+	border: 1px solid #EEE;
+}
+
+.container .h2{
+    	color: #e9e9e9;
+	font-size: 23px;
+	font-weight: normal;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+	padding: 5px 0;
+}
+
+.subtitle {
+        color: #e9e9e9;
+	font-size: 23px;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+        border-bottom:1px solid #333;
+	padding: 5px 0;
+        margin-top: 20px;
+}
+
+.data{
+        color: #ccc;
+	font-size: 16px;
+	font-weight: normal;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.1);
+	padding: 2px 0;
+}

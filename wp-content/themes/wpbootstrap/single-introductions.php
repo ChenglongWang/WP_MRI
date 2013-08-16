@@ -9,14 +9,12 @@ require 'wpc/wp-content/themes/wpbootstrap/about/includes/vcard.class.php';
 	$profile->generateJSON();
 	exit;
 }*/
-if(array_key_exists('vcard',$_GET)){
-	$profile->downloadVcard();
-	exit;
-}
-
-
 if (have_posts()) {
     $args = get_post_meta(get_the_ID(), 'personalProfile');
+    
+    if($args[0][0]['redirect'] != "")
+        wp_redirect (esc_url($args[0][0]['redirect']));
+    
     $profile = array(
         'firstName' => $args[0][0]['firstname'],
         'lastName' => $args[0][0]['lastname'],
@@ -36,7 +34,12 @@ else {
     $profile = $info;
     $page_title = "Personal Introduction";
 }
-     
+
+if(array_key_exists('vcard',$_GET)){
+	$profile->downloadVcard();
+	exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +53,6 @@ else {
         <!-- Our CSS stylesheet file -->
 
         <link href="<?php echo get_home_url() ?>/wpc/wp-content/themes/wpbootstrap/bootstrap/css/bootstrap.css" rel="stylesheet" >
-        <link href="<?php echo get_home_url() ?>/wpc/wp-content/themes/wpbootstrap/bootstrap/Buttons/css/buttons.css" rel="stylesheet" >
         <link href="<?php echo get_home_url() ?>/wpc/wp-content/themes/wpbootstrap/about/assets/css/styles.css" rel="stylesheet" >
         <!--[if lt IE 9]>
           <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -102,8 +104,6 @@ else {
                 <li><a class="url" href="<?php echo 1?>"><?php echo 1 ?></a></li>
             </ul>
         </section>
-        
-
         <section id="links">
             <center>
                 <h2><a href="<?php echo get_home_url() ?>/teachers/"><b>←BACK</b>           

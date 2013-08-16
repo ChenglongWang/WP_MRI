@@ -11,17 +11,23 @@
 	<!-- Le styles -->
         <?php wp_reset_query(); if(is_home() || is_front_page()){ ?>
         <link href="/wpc/wp-content/themes/wpbootstrap/style-index.css" rel="stylesheet">
-        <?php }else {?>
+        <?php }elseif (is_page()) { ?>
+        <link rel="stylesheet" href="/wpc/wp-content/themes/wpbootstrap/<?php 
+            if (is_page('teachers')) echo "style_teachers.css";?>" />
+        <?php } else {?>
         <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
         <?php } ?>
         <link href="/wpc/wp-content/themes/wpbootstrap/bootstrap/bxslider/jquery.bxslider.css" rel="stylesheet">
+        
+
+        
         
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-	<?php wp_enqueue_script("jquery"); ?>
+<!--	<?php wp_enqueue_script("jquery"); ?> -->
 	<?php wp_head(); ?>
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="../assets/ico/favicon.ico">
