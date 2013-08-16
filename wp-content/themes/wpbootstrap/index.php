@@ -18,9 +18,11 @@
 				</ol>
 				<div class="carousel-inner">
                    <!--  每一部分的图片与说明 -->
-					<div class="item active">
-                         <!-- item next left item active -->
-						<img alt=""  class="aligncenter" src="/wpc/wp-content/uploads/img/slide-01.jpg" />
+                                <div class="item active">
+                         <!-- item next left item active -->	
+                         
+                        <img alt=""  class="aligncenter" src="/wpc/wp-content/uploads/img/slide-01.jpg" />                                               -->
+                                  
 						<div class="carousel-caption">
 							<h4>
 								棒球

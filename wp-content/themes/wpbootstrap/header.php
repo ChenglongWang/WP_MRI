@@ -75,7 +75,7 @@
                 
                   <li><a href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 32);?>
                   </a></li> 
-                 <li> <a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class="btn btn-primary pull-right hint--error hint--bottom" data-hint="再见咯!"><font color="white">Logout</font></a><li>
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class=" hint--error hint--bottom "data-hint="再见咯!">退出</a><li>
                   </ul>
               <?php }?>
          </div><!--/.nav-collapse -->

@@ -65,6 +65,17 @@ function my_login_redirect( $redirect_to, $request, $user ){
        }
     }
 }
+function get_content_first_image($content){
+	if ( $content === false ) $content = get_the_content(); 
+
+	preg_match_all('|<img.*?src=[\'"](.*?)[\'"].*?>|i', $content, $images);
+
+	if($images){       
+		return $images[1][0];
+	}else{
+		return false;
+	}
+}
 
 add_action( 'login_form', 'username_or_email_login' );
 add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );

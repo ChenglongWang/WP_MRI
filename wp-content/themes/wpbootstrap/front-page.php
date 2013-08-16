@@ -1,68 +1,12 @@
 <?php get_header(); ?>
  
    <!--==========轮播===========-->
-   <div class = "myCarousel" >
-     <div class="container">
-	  <div class="row-fluid">
-		<div class="span12">
-			<div class="slide"  id = "carousel-833022">
-                <!-- 分成三部分 -->
-				<ol class="carousel-indicators" style = "top:160px; right:260px">
-					<li data-slide-to="0" data-target="#carousel-833022">
-					</li>
-					<li data-slide-to="1" data-target="#carousel-833022">
-					</li>
-					<li data-slide-to="2" data-target="#carousel-833022">
-					</li>
-				</ol>
-				<div class="carousel-inner">
-                   <!--  每一部分的图片与说明 -->
-					<div class="item active">
-                         <!-- item next left item active -->
-						<img alt=""  class="aligncenter" src="/wpc/wp-content/uploads/img/slide-01.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								棒球
-							</h4>
-							<p>
-								棒球运动是一种以棒打球为主要特点，集体性、对抗性很强的球类运动项目，在美国、日本尤为盛行。
-							</p>
-						</div>
-					</div>
-					<div class="item">
-                        <!-- item  -->
-						<img alt="" class="aligncenter" src="/wpc/wp-content/uploads/img/slide-02.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								冲浪
-							</h4>
-							<p>
-								冲浪是以海浪为动力，利用自身的高超技巧和平衡能力，搏击海浪的一项运动。运动员站立在冲浪板上，或利用腹板、跪板、充气的橡皮垫、划艇、皮艇等驾驭海浪的一项水上运动。
-							</p>
-						</div>
-					</div>
-					<div class="item">
-                         <!-- item next left -->
-						<img alt="" class="aligncenter" src="/wpc/wp-content/uploads/img/slide-03.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								自行车
-							</h4>
-							<p>
-								以自行车为工具比赛骑行速度的体育运动。1896年第一届奥林匹克运动会上被列为正式比赛项目。环法赛为最著名的世界自行车锦标赛。
-							</p>
-						</div>
-					</div>
-				</div> 
-                <a data-slide="prev" href="#carousel-833022" class="left carousel-control" >&lsaquo;</a>
-                <a data-slide="next" href="#carousel-833022" class="right carousel-control">&rsaquo;</a>
-			</div>
-		</div>
-	</div>
-    </div>
-   </div>
-
-
+           <ul class="bxslider">
+                <?php $recentPosts = new WP_Query( array('category_name' => 'news', 'showposts' => 5 ) ); ?>  
+                <?php while ( $recentPosts->have_posts()) : $recentPosts->the_post(); ?>  
+                   <li><img class="aligncenter" src="<?php echo get_content_first_image(get_the_content()); ?>" title="<?php the_title_attribute(); ?>" /></li>
+                    <?php endwhile;?>  
+           </ul>
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
