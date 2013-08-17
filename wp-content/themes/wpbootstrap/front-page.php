@@ -17,9 +17,9 @@
                 <h3>热点新闻</h3>              
             </div> 
             <div class ="sec-articles-wrap">
-            <?php $recentPosts = new WP_Query( array('category_name' => 'news', 'showposts' => 5 ) ); ?>  
+            <?php $news_posts = new WP_Query( array('category_name' => 'news', 'showposts' => 5 ) ); ?>  
                 <ul>  
-                    <?php while ( $recentPosts->have_posts()) : $recentPosts->the_post(); ?>  
+                    <?php while ( $news_posts->have_posts()) : $news_posts->the_post(); ?>  
                     <li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></li>  
                     <?php endwhile;?>  
                  </ul>  

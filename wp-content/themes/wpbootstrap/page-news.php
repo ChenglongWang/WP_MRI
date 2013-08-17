@@ -17,41 +17,28 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="tab1">
-                                        <?php $recentPosts = new WP_Query( array('category_name' => 'news', 'showposts' => 10 ) ); ?>
+                                        <?php $news_posts = new WP_Query( array('category_name' => 'news', 'showposts' => 10 ) ); ?>
 					<p>
-                                            <div class="accordion" id="accordion2">
-                                                 <?php while ( $recentPosts->have_posts()) : $recentPosts->the_post(); ?>
-                                                    <div class="accordion-group">
-                                                        <div class="accordion-heading">
-                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<?php the_ID() ?>">
-                                                            <?php the_title() ?>
-                                                            </a>
-                                                        </div>
-                                                        <div id="<?php the_ID() ?>" class="accordion-body collapse">
-                                                            <div class="accordion-inner">
-                                                                <?php global $more;
-                                                                    $more = 0;
-                                                                    the_content('[Read more...]')
-                                                                    ?>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                   <?php endwhile; ?>
-                                                  </div>
+                                                <div class="accordion" id="accordion1">
+                                                    <?php echo_collapse($news_posts, 'accordion1'); ?>
+                                                </div>
 					 </p>
 					</div>
                                     
 					<div class="tab-pane" id="tab2">
-                                            <?php $recentposts = new WP_Query( array('category_name' => 'news', 'showposts' => 3 ) ); ?>
+                                            <?php $announc_posts = new WP_Query( array('category_name' => 'news', 'showposts' => 3 ) ); ?>
 						<p>
-                                                <div class="accordion" id="accordion1">
-                                                    <?php echo_collapse($recentposts, 'accordion1'); ?>
+                                                <div class="accordion" id="accordion2">
+                                                    <?php echo_collapse($announc_posts, 'accordion2'); ?>
                                                 </div>
 						</p>
 					</div>
                                         <div class="tab-pane" id="tab3">
+                                            <?php $mri_posts = new WP_Query( array('category_name' => 'news', 'showposts' => 4 ) ); ?>
                                             <p>
-          
+                                                <div class="accordion" id="accordion3">
+                                                    <?php echo_collapse($mri_posts, 'accordion3'); ?>
+                                                </div>
                                             </p>
                                         </div>
 				</div>

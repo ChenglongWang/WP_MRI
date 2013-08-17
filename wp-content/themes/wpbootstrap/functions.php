@@ -78,18 +78,53 @@ while ( $posts->have_posts()) : $posts->the_post();
             </a>
         </div>
         <div id="<?php echo $accordionID.the_ID() ?>" class="accordion-body collapse">
-            <div class="accordion-inner">...
-                <?php the_content('[Read more...]') ?> 
+            <div class="accordion-inner">
+                <?php $excerpt = get_the_excerpt();
+                      if($excerpt == '') 
+                          the_content('[Read more...]');
+                      else echo $excerpt.'<a class="read-more pull-right" href="'. get_permalink( get_the_ID() ) . '"><br><br>更多</a>';?> 
+
             </div>
         </div>
     </div>
 <?php endwhile; ?><?php
 }
 
+//function new_excerpt_more( $more ) {
+//	return ' <a class="read-more pull-right" href="'. get_permalink( get_the_ID() ) . '"><br><br>更多</a>';}
+
+function custom_excerpt_length( $length ) {
+	return 300;
+}
+
+function improved_trim_excerpt($text) {
+        global $post;
+        if ( '' == $text ) {
+                $text = get_the_content('');
+                $text = apply_filters('the_content', $text);
+                $text = str_replace('\]\]\>', ']]&gt;', $text);
+                $text = preg_replace('@<script[^>]*?>.*?</script>@si', '', $text);
+          //      $text = strip_tags($text, '<img>');
+                $excerpt_length = 100;
+                $words = explode(' ', $text, $excerpt_length + 1);
+                if (count($words)> $excerpt_length) {
+                        array_pop($words);
+                        array_push($words, '[...]');
+                        $text = implode(' ', $words);
+                }
+        }
+        return $text;
+}
+
+remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter('get_the_excerpt', 'improved_trim_excerpt');
+
 add_action( 'login_form', 'username_or_email_login' );
 add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 add_action( 'after_setup_theme', 'remove_admin_bar');
 add_filter( "login_redirect", "my_login_redirect", 10, 3);
+//add_filter( 'excerpt_more', 'new_excerpt_more' );
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 
 if ( function_exists('register_sidebar') )
