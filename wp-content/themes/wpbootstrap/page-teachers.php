@@ -66,12 +66,13 @@
         <tr>
             <?php if(!empty($students)) { ?>
                 <?php foreach($students as $student) { ?>
-                    <td width="20%"><a href="<?php echo get_post_permalink($student) ?>" class="data"><?php echo get_the_title($student)?></a></td>
+                    <td width="20%">
+                        <a href="<?php echo get_post_permalink($student) ?>" class="data"><?php echo get_the_title($student)?></a>
+                    </td>
                 <?php } ?>                
             <?php } ?>
-
         </tr>
     </table>
-</section>
 
+</section>
 <?php get_footer() ?>

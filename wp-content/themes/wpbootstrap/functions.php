@@ -66,6 +66,26 @@ function my_login_redirect( $redirect_to, $request, $user ){
     }
 }
 
+function echo_collapse( $posts, $accordionID ){
+    //显示colllapse
+while ( $posts->have_posts()) : $posts->the_post();
+    global $more;
+    $more = 0;?>
+     <div class = "accordion-group">
+        <div class = "accordion-heading">
+            <a class = "accordion-toggle" data-toggle = "collapse" data-parent = "#<?php echo $accordionID ?>" href = "#<?php echo $accordionID.the_ID() ?>">
+                <?php the_title() ?>
+            </a>
+        </div>
+        <div id="<?php echo $accordionID.the_ID() ?>" class="accordion-body collapse">
+            <div class="accordion-inner">...
+                <?php the_content('[Read more...]') ?> 
+            </div>
+        </div>
+    </div>
+<?php endwhile; ?><?php
+}
+
 add_action( 'login_form', 'username_or_email_login' );
 add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 add_action( 'after_setup_theme', 'remove_admin_bar');
