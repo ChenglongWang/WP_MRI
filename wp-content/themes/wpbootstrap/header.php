@@ -70,8 +70,6 @@
                                 </li>
                                 </ul>                  
                                </ul> 
-               <!--     <input type="submit" value="Sign in" class="btn btn-primary"> onclick="return emailCheck()"-->
-                
               <?php }else { ?>
                   <ul class="nav pull-right">
                   <li class="divider-vertical"></li>                    
