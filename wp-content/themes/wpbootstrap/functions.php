@@ -93,9 +93,8 @@ while ( $posts->have_posts()) : $posts->the_post();
 //function new_excerpt_more( $more ) {
 //	return ' <a class="read-more pull-right" href="'. get_permalink( get_the_ID() ) . '"><br><br>更多</a>';}
 
-function custom_excerpt_length( $length ) {
-	return 300;
-}
+//function custom_excerpt_length( $length ) {
+//	return 300;}
 
 function improved_trim_excerpt($text) {
         global $post;
@@ -124,7 +123,7 @@ add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 add_action( 'after_setup_theme', 'remove_admin_bar');
 add_filter( "login_redirect", "my_login_redirect", 10, 3);
 //add_filter( 'excerpt_more', 'new_excerpt_more' );
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+//add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 
 if ( function_exists('register_sidebar') )

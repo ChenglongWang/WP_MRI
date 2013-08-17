@@ -6,13 +6,13 @@
 			<div class="tabbable tabs-left">
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a href="#tab1" data-toggle="tab">新闻</a>
+						<a href="#tab1" data-toggle="tab"><i class="icon-th-list"></i> 新闻</a>
 					</li>
 					<li>
-						<a href="#tab2" data-toggle="tab">公告</a>
+						<a href="#tab2" data-toggle="tab"><i class="icon-th-list"></i> 公告</a>
 					</li>
                                         <li>
-						<a href="#tab3" data-toggle="tab">动态</a>
+						<a href="#tab3" data-toggle="tab"><i class="icon-th-list"></i> 动态</a>
 					</li>
 				</ul>
 				<div class="tab-content">
