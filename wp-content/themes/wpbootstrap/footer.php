@@ -1,7 +1,7 @@
 
 <!-- FOOTER -->
 <footer>
-    <div id="footer" class ="container" style="position: absolute; bottom: 0px;">
+    <div id="footer" class ="container" style="position: relative; bottom: 0px;">
         <div class ="lab-address">
             <h5>上海市磁共振重点实验室</h5>
             <p>

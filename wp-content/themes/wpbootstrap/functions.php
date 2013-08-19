@@ -66,6 +66,7 @@ function my_login_redirect( $redirect_to, $request, $user ){
     }
 }
 
+//Written by wcl.
 function echo_collapse( $posts, $accordionID ){
     //显示colllapse
 while ( $posts->have_posts()) : $posts->the_post();
@@ -89,6 +90,19 @@ while ( $posts->have_posts()) : $posts->the_post();
     </div>
 <?php endwhile; ?><?php
 }
+
+//Written by wcl
+function echo_pagination($cpage, $cat, $totalPages){
+    ?>
+        <ul class = "pager" style="text-align: left; margin-left: 200px; margin-top: 100px;">
+        <li class = "<?php if($cpage==1) echo "disabled" ?>">
+            <a href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage>1)? ($cpage-1) : 1; ?>&cat=<?php echo $cat?>"><i class = "icon-hand-left"></i> Previous
+            </a></li>
+        <li class = "<?php if($cpage==$totalPages) echo "disabled" ?>">
+            <a href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage+1)?>&cat=<?php echo $cat?>">Next <i class = "icon-hand-right"></i>
+            </a></li>
+        </ul>
+<?php }
 
 //function new_excerpt_more( $more ) {
 //	return ' <a class="read-more pull-right" href="'. get_permalink( get_the_ID() ) . '"><br><br>更多</a>';}

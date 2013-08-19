@@ -30,8 +30,8 @@ body {
 	border: 1px solid #EEE;
 }
 
-#accordion2 a { color: green; }
-#accordion3 a { color: #ad5151; }
+#accordionannounce a { color: green; }
+#accordionindustry a { color: #ad5151; }
 
 /*
 Dropdown list on mouse hover
@@ -78,7 +78,43 @@ Dropdown list on mouse hover
     top: 11px;
     left: -6px;
 }
+/*
+Dropdown list on mouse hover Ending!
+*/
 
 /*
-Dropdown list on mouse hover End!
+Custom pager css with input tag.
 */
+input.pager {
+  margin: 20px 0;
+  text-align: center;
+  list-style: none;
+  *zoom: 1;
+  display: inline-block;
+  padding: 5px 14px;
+  color: #0088cc;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+          border-radius: 15px;
+}
+
+input.pager:before,
+input.pager:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+input.pager:after {
+  clear: both;
+}
+
+input.pager:hover,
+input.pager:focus {
+  color: #21759b;
+  text-decoration: none;
+  background-color: #f4f4f4;
+}
+
