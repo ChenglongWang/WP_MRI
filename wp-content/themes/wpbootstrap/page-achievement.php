@@ -23,13 +23,13 @@
 	<?php wp_enqueue_script("jquery"); ?>
 	<?php wp_head(); ?>
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+<!--    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-  </head>
-
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
+</style>
+</head>
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -82,4 +82,121 @@
         </div>
       </div>
     </div>
-   <div class="container">
+      
+     
+<div class="container">
+     
+    <div class="content">       
+            <div id="daohang">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;
+                                <a href="#">学术论文与专著</a></td>
+                            </tr>
+                            <tr>
+                            <td>
+                                &nbsp;&nbsp;
+                                <a href="#">申请专利</a></td>
+                            </tr>
+                            <tr>
+                            <td>
+                                &nbsp;&nbsp;
+                                <a href="#">获奖情况</a></td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            
+<!--                <ul id="nav">
+                    <li><a href="#">科研项目</a></li>
+                    <li><a href="">科研队伍</a></li>
+                    <li><a href="">科研成果</a></li>
+                </ul>-->
+                </div>
+        <div id="wenzhang">
+            <td width="800" height="100%" valign="top" style="border-top:1px" solid #9ac1c9>   
+                <iframe src="<?php echo $_SERVER['REQUEST_URI'];echo(str_replace('/',"", $url));?>" name="newsframe" width="100%" marginwidth="0"  marginheight="0" align="" scrolling="no" frameborder="0" id="newsframe">
+                </frame>
+                </td>
+                </div>
+
+                  
+                 
+            
+
+    <div id="zhengwen">
+    <p style="font-size:14px"><strong>学术委员会主任: 郭爱克（院士）<br/><br/> 
+     学术委员会副主任: 叶朝晖（院士）&nbsp;&nbsp;张善民（教授）</strong> 
+    </p>
+    <div id="biaoge">
+    <br />
+    <strong style="font-size:14px">学术委员会委员及顾问：</strong>
+    <table>
+       <tbody>
+          <tr>
+          <td width="128" style="font-size:14px"><strong>姓名</strong></td>
+          <td width="108" style="font-size:14px"><strong>级别</strong></td>
+          <td width="282" style="font-size:14px"><strong>毕业院校</strong></td>
+          </tr>
+          <tr style="background-color:#99ccff; font-size:14px">
+              <td>贺鹤勇</td>
+              <td>教授</td>
+              <td>复旦大学</td>
+            </tr>
+            <tr style="font-size:14px">
+              <td>冯晓源</td>
+              <td>教授</td>
+              <td>上海医科大学</td>
+            </tr>
+            <tr style="background-color:#99ccff; font-size:14px">
+              <td>彭卫军</td>
+              <td>教授</td>
+              <td>上海医科大学</td>
+            </tr>
+            <tr style="font-size:14px">
+              <td>冯晓明</td>
+              <td>教授</td>
+              <td></td>
+            </tr>
+            <tr style="background-color:#99ccff; font-size:14px">
+              <td>赵欣</td>
+              <td>教授</td>
+              <td>兰州大学</td>
+            </tr>
+            <tr style="font-size:14px">
+              <td>张建国</td>
+              <td>教授</td>
+              <td></td>
+            </tr>
+            <tr style="background-color:#99ccff; font-size:14px">
+              <td>王乙</td>
+              <td>教授</td>
+              <td></td>
+            </tr>
+            <tr style="font-size:14px">
+              <td>徐冬溶</td>
+              <td>教授</td>
+              <td></td>
+            </tr>
+            <tr style="background-color:#99ccff; font-size:14px">
+              <td>杨雄里</td>
+              <td>教授</td>
+              <td></td>
+            </tr>
+            <tr style="font-size:14px">
+              <td>胡小平</td>
+              <td>教授</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+    </div>
+    </div>
+ 
+    
+<?php get_footer(); ?>
