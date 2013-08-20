@@ -83,7 +83,7 @@ while ( $posts->have_posts()) : $posts->the_post();
                 <?php $excerpt = get_the_excerpt();
                       if($excerpt == '') 
                           the_content('[Read more...]');
-                      else echo $excerpt.'<a class="read-more pull-right" href="'. get_permalink( get_the_ID() ) . '"><br><br>更多</a>';?> 
+                      else echo $excerpt.'<a class="read-more pull-right" href="'. get_permalink( get_the_ID() ) . '" target = _blank><br><br>更多</a>';?> 
 
             </div>
         </div>
