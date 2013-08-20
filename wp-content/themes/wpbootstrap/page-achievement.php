@@ -1,202 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Bootstrap for MRI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<?php
 
-
-	<!-- Le styles -->
-        <?php wp_reset_query(); if(is_home() || is_front_page()){ ?>
-        <link href="/wpc/wp-content/themes/wpbootstrap/style-index.css" rel="stylesheet">
-        <?php }else {?>
-        <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
-        <?php } ?>
-        <link href="/wpc/wp-content/themes/wpbootstrap/bootstrap/bxslider/jquery.bxslider.css" rel="stylesheet">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-	<?php wp_enqueue_script("jquery"); ?>
-	<?php wp_head(); ?>
-    <!-- Le fav and touch icons -->
-<!--    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
-</style>
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+?>
+<head>
+    <link href="/wpc/wp-content/themes/wpbootstrap/portfolio/style.css" rel="stylesheet">    
+    <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
+    <style>
+        .subtitle {
+        color: #0088cc;
+	font-size: 23px;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+        border-bottom:1px solid #333;
+	padding: 5px 0;
+        margin-top: 5px;
+        }
+        .da-thumbs img { max-width: 300px; height:150px;}
+    </style>
 </head>
-  <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-            <a class="brand hint--bottom hint--success" data-hint="欢迎来到我们的实验室!" href="<?php echo get_home_url() ?>"><?php bloginfo('name') ?></a>
-         <div class="nav-collapse collapse">
- <!--   <ul class="nav">-->
-              <?php 
-             //    wp_list_pages(array('title_li' => '')); 
-                wp_nav_menu( array( 'theme_location' => 'header-menu',
-                    'container_class' => 'nav-collapse collapse',
-                    'menu_class' => 'nav',
-                    'items_wrap' => '<ul class="nav">%3$s</ul>',
-                    'walker' => new Bootstrap_Walker_Nav_Menu()));
-              ?> 
- <!--        </ul>-->
-              <?php if(!( is_user_logged_in())){?>
-                <ul class="nav pull-right">
-                    <li class="dropdown" data-dropdown="dropdown">
-                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown"> <font face ="微软雅黑">登录</font>                         
-                              <b class="caret"></b>
-                            </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class=" hint--right hint--info" data-hint="点这里登录哟!" href="<?php echo get_home_url();?>/wp-login.php"><i class="icon-user"></i>&nbsp;登录</a>
-                                </li>
-                                <li>
-                                    <a class=" hint--right hint--info" data-hint="点这里注册哟!" href="<?php echo get_home_url();?>/wpc/wp-login.php?action=register"><i class="icon-user"></i>&nbsp;注册</a>
-                                </li>
-                                </ul>                  
-                               </ul> 
-               <!--     <input type="submit" value="Sign in" class="btn btn-primary"> onclick="return emailCheck()"-->
-                
-              <?php }else { ?>
-                  <ul class="nav pull-right">
-                      <li class="divider-vertical"></li>                    
-                
-                  <li><a href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 25);?>
-                  </a></li> 
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class=" hint--error hint--bottom "data-hint="再见咯!">退出</a><li>
-                  </ul>
-              <?php }?>
-         </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-      
-     
-<div class="container">
-     
-    <div class="content">       
-            <div id="daohang">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                &nbsp;&nbsp;
-                                <a href="#">学术论文与专著</a></td>
-                            </tr>
-                            <tr>
-                            <td>
-                                &nbsp;&nbsp;
-                                <a href="#">申请专利</a></td>
-                            </tr>
-                            <tr>
-                            <td>
-                                &nbsp;&nbsp;
-                                <a href="#">获奖情况</a></td>
-                            </tr>
-                            </tbody>
-                            </table>
-                            
-<!--                <ul id="nav">
-                    <li><a href="#">科研项目</a></li>
-                    <li><a href="">科研队伍</a></li>
-                    <li><a href="">科研成果</a></li>
-                </ul>-->
-                </div>
-        <div id="wenzhang">
-            <td width="800" height="100%" valign="top" style="border-top:1px" solid #9ac1c9>   
-                <iframe src="<?php echo $_SERVER['REQUEST_URI'];echo(str_replace('/',"", $url));?>" name="newsframe" width="100%" marginwidth="0"  marginheight="0" align="" scrolling="no" frameborder="0" id="newsframe">
-                </frame>
-                </td>
-                </div>
 
-                  
-                 
-            
-
-    <div id="zhengwen">
-    <p style="font-size:14px"><strong>学术委员会主任: 郭爱克（院士）<br/><br/> 
-     学术委员会副主任: 叶朝晖（院士）&nbsp;&nbsp;张善民（教授）</strong> 
-    </p>
-    <div id="biaoge">
-    <br />
-    <strong style="font-size:14px">学术委员会委员及顾问：</strong>
-    <table>
-       <tbody>
-          <tr>
-          <td width="128" style="font-size:14px"><strong>姓名</strong></td>
-          <td width="108" style="font-size:14px"><strong>级别</strong></td>
-          <td width="282" style="font-size:14px"><strong>毕业院校</strong></td>
-          </tr>
-          <tr style="background-color:#99ccff; font-size:14px">
-              <td>贺鹤勇</td>
-              <td>教授</td>
-              <td>复旦大学</td>
-            </tr>
-            <tr style="font-size:14px">
-              <td>冯晓源</td>
-              <td>教授</td>
-              <td>上海医科大学</td>
-            </tr>
-            <tr style="background-color:#99ccff; font-size:14px">
-              <td>彭卫军</td>
-              <td>教授</td>
-              <td>上海医科大学</td>
-            </tr>
-            <tr style="font-size:14px">
-              <td>冯晓明</td>
-              <td>教授</td>
-              <td></td>
-            </tr>
-            <tr style="background-color:#99ccff; font-size:14px">
-              <td>赵欣</td>
-              <td>教授</td>
-              <td>兰州大学</td>
-            </tr>
-            <tr style="font-size:14px">
-              <td>张建国</td>
-              <td>教授</td>
-              <td></td>
-            </tr>
-            <tr style="background-color:#99ccff; font-size:14px">
-              <td>王乙</td>
-              <td>教授</td>
-              <td></td>
-            </tr>
-            <tr style="font-size:14px">
-              <td>徐冬溶</td>
-              <td>教授</td>
-              <td></td>
-            </tr>
-            <tr style="background-color:#99ccff; font-size:14px">
-              <td>杨雄里</td>
-              <td>教授</td>
-              <td></td>
-            </tr>
-            <tr style="font-size:14px">
-              <td>胡小平</td>
-              <td>教授</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-       </td>
-      </tr>
-     </tbody>
-    </table>
-    </div>
-    </div>
- 
+<body style="padding-top: 0px;">
     
-<?php get_footer(); ?>
+<h2 class="subtitle">
+        科研成果
+</h2>
+<div class="alert alert-info">
+        <p>
+                github是一个全球化的开源社区.
+        </p> <small>关键词 <cite>开源</cite></small>
+</div>
+<h2 class="subtitle">
+        专利发明
+</h2>
+<blockquote class="alert alert-info">
+        <p>
+                github是一个全球化的开源社区.
+        </p> <small>关键词 <cite>开源</cite></small>
+</blockquote>
+
+<h2 class="subtitle">
+        科研成果
+</h2>
+    <div class="image_grid portfolio_4col">
+    <ul style="height: 495px; margin-left: 0px" class="da-thumbs">
+        <li><img src="/wpc/wp-content/themes/wpbootstrap/portfolio/images/portfolio2.jpg" alt="img">
+            <article class="da-animate da-slideFromRight" style="display: block;">
+                <h4>New Year</h4>
+                <em>HappyHappyHappyHappyHappyHappy</em>
+                <span class="link_post"><a href="#"></a></span>
+            </article>
+    </li>
+    <li>
+            <img src="\wpc\wp-content\uploads\2013\08\DSC00082-300x168.jpg" alt="img">
+            <article class="da-animate da-slideFromTop" style="display: block;">
+                lifestyle
+                <em>auctor</em>
+                <span class="link_post"><a href="#"></a></span>
+            </article>
+        </li>
+    
+    
+    </ul></div>
+    
+    <script src="/wpc/wp-content/themes/wpbootstrap/bootstrap/js/jquery.js"></script>
+    <script src="/wpc/wp-content/themes/wpbootstrap/portfolio/js/jquery-hover-effect.js"></script>
+    <script type="text/javascript">
+
+$(document).ready(function(){
+    $(function(){
+        //Image Hover
+	$('ul.da-thumbs > li').hoverdir();
+    });
+
+});
+</script>
+</body>

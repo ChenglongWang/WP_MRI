@@ -18,11 +18,9 @@
 				</ol>
 				<div class="carousel-inner">
                    <!--  每一部分的图片与说明 -->
-                                <div class="item active">
-                         <!-- item next left item active -->	
-                         
-                        <img alt=""  class="aligncenter" src="/wpc/wp-content/uploads/img/slide-01.jpg" />                                               -->
-                                  
+					<div class="item active">
+                         <!-- item next left item active -->
+						<img alt=""  class="aligncenter" src="/wpc/wp-content/uploads/img/slide-01.jpg" />
 						<div class="carousel-caption">
 							<h4>
 								棒球
@@ -77,9 +75,9 @@
                 <h3>热点新闻</h3>              
             </div> 
             <div class ="sec-articles-wrap">
-            <?php $recentPosts = new WP_Query( array('category_name' => 'news', 'showposts' => 5 ) ); ?>  
+            <?php $news_posts = new WP_Query( array('category_name' => 'news', 'showposts' => 5 ) ); ?>  
                 <ul>  
-                    <?php while ( $recentPosts->have_posts()) : $recentPosts->the_post(); ?>  
+                    <?php while ( $news_posts->have_posts()) : $news_posts->the_post(); ?>  
                     <li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></li>  
                     <?php endwhile;?>  
                  </ul>  

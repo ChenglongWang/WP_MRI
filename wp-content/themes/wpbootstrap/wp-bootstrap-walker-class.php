@@ -43,7 +43,7 @@ class Bootstrap_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target     ) .'"' : '';
 		$attributes .= ! empty( $item->xfn ) ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url ) ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-		$attributes .= ($args->has_children) ? ' class="dropdown-toggle" data-toggle="dropdown"' : ''; 
+		$attributes .= ($args->has_children) ? ' class="dropdown-toggle"' : ''; //class="dropdown-toggle" data-toggle="dropdown"'
 
 		$item_output = $args->before;
 		$item_output .= '<a'. $attributes .'>';
