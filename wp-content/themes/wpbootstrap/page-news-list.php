@@ -1,7 +1,7 @@
 <?php 
 $countPerPage = 5;
-echo ' cat:'.$cat = $_GET["cat"];
-echo ' page:'.$current_page = $_GET["cpage"];
+$cat = $_GET["cat"];
+$current_page = $_GET["cpage"];
 if($cat == '') $cat = "news";
 if($current_page < 1) $current_page = 1;
 
@@ -9,8 +9,11 @@ if($current_page < 1) $current_page = 1;
 $posts = new WP_Query( array('category_name' => $cat,'posts_per_page' => $countPerPage, 'paged' => $current_page) );
 
 $categorie = get_categories( 'type='.$cat );
-$categorie_number =  $categorie[0]->count;
-$total_pages = ceil($categorie_number / $countPerPage);
+foreach($categorie as $val)
+    if($val->slug == $cat) $categorie_number = $val->count;
+    else $categorie_number = 1;
+
+    $total_pages = ceil($categorie_number / $countPerPage);
 ?>
 <!DOCTYPE html>
 <html lang="en">

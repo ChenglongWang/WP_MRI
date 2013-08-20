@@ -97,9 +97,15 @@ function echo_pagination($cpage, $cat, $totalPages){
         <ul class = "pager" style="text-align: left; margin-left: 200px; margin-top: 100px;">
         <li class = "<?php if($cpage==1) echo "disabled" ?>">
             <a href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage>1)? ($cpage-1) : 1; ?>&cat=<?php echo $cat?>"><i class = "icon-hand-left"></i> Previous
-            </a></li>
+            </a>
+        </li>
+        <span class="badge badge-info"><?php echo $cpage?></span>
         <li class = "<?php if($cpage==$totalPages) echo "disabled" ?>">
-            <a href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage+1)?>&cat=<?php echo $cat?>">Next <i class = "icon-hand-right"></i>
+            <a 
+                <?php if($cpage < $totalPages) {?> 
+                    href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage+1)?>&cat=<?php echo $cat?>"
+                <?php } ?>
+                    >Next <i class = "icon-hand-right"></i>
             </a></li>
         </ul>
 <?php }
