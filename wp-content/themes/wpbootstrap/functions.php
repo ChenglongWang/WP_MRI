@@ -77,6 +77,9 @@ function get_content_first_image($content){
 	}
 }
 
+
+
+
 add_action( 'login_form', 'username_or_email_login' );
 add_action( 'wp_enqueue_scripts', 'wpbootstrap_scripts_with_jquery' );
 add_action( 'after_setup_theme', 'remove_admin_bar');
