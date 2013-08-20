@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
  include("wp-bootstrap-walker-class.php");
 
 function wpbootstrap_scripts_with_jquery()
@@ -43,11 +43,11 @@ function username_or_email_login() {
 	?><script type="text/javascript">
 	// Form Label
 	if ( document.getElementById('loginform') )
-		document.getElementById('loginform').childNodes[1].childNodes[1].childNodes[0].nodeValue = '<?php echo esc_js( __( '用户�邮箱', 'email-login' ) ); ?>';
+		document.getElementById('loginform').childNodes[1].childNodes[1].childNodes[0].nodeValue = '<?php echo esc_js( __( '用户/邮箱', 'email-login' ) ); ?>';
  
 	// Error Messages
 	if ( document.getElementById('login_error') )
-		document.getElementById('login_error').innerHTML = document.getElementById('login_error').innerHTML.replace( '<?php echo esc_js( __( '用户� ) ); ?>', '<?php echo esc_js( __( '用户�邮箱' , 'email-login' ) ); ?>' );
+		document.getElementById('login_error').innerHTML = document.getElementById('login_error').innerHTML.replace( '<?php echo esc_js( __( '用户名' ) ); ?>', '<?php echo esc_js( __( '用户名/邮箱' , 'email-login' ) ); ?>' );
 	</script><?php
 }
 function my_login_redirect( $redirect_to, $request, $user ){

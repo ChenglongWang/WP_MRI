@@ -16,11 +16,8 @@ Tags: responsive, white, bootstrap
    body 
     {
       padding-bottom: 10px;
-      color: #5a5a5a; 
+      color: #5a5a5a;
     }
-    
-   
-
     .container-fluid 
     {
     position:relative;
@@ -30,7 +27,7 @@ Tags: responsive, white, bootstrap
     .navbar-fixed-top 
     {
       position:relative;
-        margin-bottom: 0px;
+    margin-bottom: 0px;
       margin-top:0px;  
   }
     .navbar-fixed-top .navbar-inner
@@ -42,9 +39,6 @@ Tags: responsive, white, bootstrap
     {
         height:46px;
     } 
-    
-
-
     .container-fluid .container
     {
         height:90px;
@@ -103,19 +97,17 @@ Tags: responsive, white, bootstrap
      .sec-header
      {
          border-bottom:rgb(215,215,215) 1px solid;
-         height:35px;
-         line-height:35px;
+         height:44px;
+         line-height:44px;
          margin-bottom:15px;
          margin-top:10px;
      }
-      
      .sec-articles-wrap
      {
          width:350px;
          height:210px;
          position:relative;
-         font-size:15px;
-         font-family: 'Microsoft Yahei';
+         font-size:20px;
      }
      .sec-articles-wrap .btn
      {
