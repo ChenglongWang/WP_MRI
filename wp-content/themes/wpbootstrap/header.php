@@ -11,19 +11,16 @@
 	<!-- Le styles -->
         <?php wp_reset_query(); if(is_home() || is_front_page()){ ?>
         <link href="/wpc/wp-content/themes/wpbootstrap/style-index.css" rel="stylesheet">
-        <link href="/wpc/wp-content/themes/wpbootstrap/bootstrap/bxslider/jquery.bxslider.css" rel="stylesheet">
-        <?php }elseif (is_page()) { ?>
-        <link rel="stylesheet" href="/wpc/wp-content/themes/wpbootstrap/<?php 
-            if (is_page('teachers')) echo "style_teachers.css";?>" />
-        <?php } else {?>
+        <?php }else {?>
         <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
         <?php } ?>
-        
+        <link href="/wpc/wp-content/themes/wpbootstrap/bootstrap/bxslider/jquery.bxslider.css" rel="stylesheet">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
+
+	<?php wp_enqueue_script("jquery"); ?>
 	<?php wp_head(); ?>
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="../assets/ico/favicon.ico">
@@ -58,8 +55,8 @@
               <?php if(!( is_user_logged_in())){?>
                 <ul class="nav pull-right">
                     <li class="dropdown" data-dropdown="dropdown">
-                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown"> <font face ="微软雅黑">登录</font>
-                            <b class="caret"></b>
+                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown"> <font face ="微软雅黑">登录</font>                         
+                              <b class="caret"></b>
                             </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -70,16 +67,15 @@
                                 </li>
                                 </ul>                  
                                </ul> 
+               <!--     <input type="submit" value="Sign in" class="btn btn-primary"> onclick="return emailCheck()"-->
+                
               <?php }else { ?>
                   <ul class="nav pull-right">
-                  <li class="divider-vertical"></li>                    
+                      <li class="divider-vertical"></li>                    
                 
-                  <li>
-                      <a href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 25);?></a>
-                  </li> 
-                  <li>
-                      <a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class="btn btn-primary hint--error hint--bottom" data-hint="再见咯!"><font color="white">Logout</font></a>
-                  <li>
+                  <li><a href="<?php echo get_option('home'); ?>/wp-admin"><?php global $current_user; get_currentuserinfo(); echo get_avatar( $current_user->ID, 25);?>
+                  </a></li> 
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="<?php echo wp_logout_url($_SERVER['REQUEST_URI']); ?>" class=" hint--error hint--bottom "data-hint="再见咯!"> <font face ="微软雅黑">退出</font></a><li>
                   </ul>
               <?php }?>
          </div><!--/.nav-collapse -->

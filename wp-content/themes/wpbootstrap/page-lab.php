@@ -1,39 +1,29 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Bootstrap for MRI</title>
-        <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
-        
-    </head>
-    
-    
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand hint--bottom hint--success" data-hint="欢迎来到我们的实验室!" href="http://localhost">上海核磁共振实验室</a>
-                <div class="nav-collapse ">
-                    <!--   <ul class="nav">-->
-                    <div class="nav-collapse ">
-                        <ul class="nav">
-                            <li id="menu-item-185" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor dropdown menu-item-185" data-dropdown="dropdown">
-                                <a href="http://localhost/teachers/" class="dropdown-toggle" data-toggle="dropdown">实验室概况 <b class="caret"></b> </a>
-                                <ul class="dropdown-menu">
-                                    <li id="menu-item-187" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-26 current_page_item menu-item-187 active"><a href="http://localhost/corporation/">科研合作</a></li>
-                                    <li id="menu-item-186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-186"><a href="http://localhost/lab/%e7%a7%91%e7%a0%94%e6%96%b9%e5%90%91/">科研方向</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+<?php 
+$a=$_GET["id"];
+get_header();?>      
+    <div class="container-fluid">
+          <div class="row-fluid">
+                <div class="span3 bs-docs-sidebar" style="margin-top: 20px">                   
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <li id="introduce"><a href="<?php esc_url(get_home_url())?>/introduce" target="labframe"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">实验室简介</font></a></li>
+                        <li id="teachers"><a href="<?php  esc_url(get_home_url())?>/teachers" target="labframe"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">师资队伍</font></a></li>
+                        <li id="committee"><a href="<?php   esc_url(get_home_url())?>/committee" target="labframe"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">学术委员会</font></a></li>
+                      </ul>
                     </div>
-                </div>
-            </div>
+               <div class="span9" style="margin-top: 60px">
+              <div class="container" style="width: 100%">
+                 
+                      
+                  <iframe src="<?php get_home_url()?>/<?php if($a == '1')                       
+                             echo 'introduce';
+                          elseif($a == '2')  
+                          echo 'teachers';
+                          else
+                         echo 'committee';
+                        ?>/" name="labframe" width="100%" height="1000px" marginwidth="0"  marginheight="0" align="center" scrolling="no" frameborder="0" id="labframe">                   
+                      
+                </iframe>
+           </div>                        
         </div>
-    </div>
-    
-</body>
-</html>
+              </div>
+<?php get_footer(); ?>

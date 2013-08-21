@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
  include("wp-bootstrap-walker-class.php");
 
 function wpbootstrap_scripts_with_jquery()
@@ -65,6 +65,20 @@ function my_login_redirect( $redirect_to, $request, $user ){
        }
     }
 }
+function get_content_first_image($content){
+	if ( $content === false ) $content = get_the_content(); 
+
+	preg_match_all('|<img.*?src=[\'"](.*?)[\'"].*?>|i', $content, $images);
+
+	if($images){       
+		return $images[1][0];
+	}else{
+		return false;
+	}
+}
+
+
+
 
 //Written by wcl.
 function echo_collapse( $posts, $accordionID ){
