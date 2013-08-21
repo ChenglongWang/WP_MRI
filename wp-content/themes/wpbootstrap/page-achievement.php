@@ -75,7 +75,6 @@ $(document).ready(function(){
         //Image Hover
 	$('ul.da-thumbs > li').hoverdir();
     });
-
 });
 </script>
 </body>

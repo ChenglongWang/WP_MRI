@@ -9,7 +9,7 @@ get_header();
 	<div class="row-fluid">
 		<div class="span12" >
 			<div class="tabbable tabs-left">
-				<ul class="nav nav-tabs">
+				<ul class="nav nav-tabs" style="padding-top: 50px; padding-bottom: 50px;">
 					<li class="active">
 						<a href="#tabnews" data-toggle="tab"><i class="icon-th-list"></i> 新闻</a>
 					</li>
