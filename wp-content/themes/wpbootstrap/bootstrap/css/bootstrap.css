@@ -3882,9 +3882,9 @@ input[type="submit"].btn.btn-mini {
 }
 
 .alert-info {
-  color: #3a87ad;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  color: #333;
+  background-color: white;
+  border-color: #E1E1E8;
 }
 
 .alert-info h4 {

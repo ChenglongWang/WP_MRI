@@ -1,39 +1,38 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Bootstrap for MRI</title>
-        <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
-        
-    </head>
-    
-    
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand hint--bottom hint--success" data-hint="欢迎来到我们的实验室!" href="http://localhost">上海核磁共振实验室</a>
-                <div class="nav-collapse ">
-                    <!--   <ul class="nav">-->
-                    <div class="nav-collapse ">
-                        <ul class="nav">
-                            <li id="menu-item-185" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor dropdown menu-item-185" data-dropdown="dropdown">
-                                <a href="http://localhost/teachers/" class="dropdown-toggle" data-toggle="dropdown">实验室概况 <b class="caret"></b> </a>
-                                <ul class="dropdown-menu">
-                                    <li id="menu-item-187" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-26 current_page_item menu-item-187 active"><a href="http://localhost/corporation/">科研合作</a></li>
-                                    <li id="menu-item-186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-186"><a href="http://localhost/lab/%e7%a7%91%e7%a0%94%e6%96%b9%e5%90%91/">科研方向</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<?php   
+    $tab = $_GET["tab"];
+    if($tab == '') $tab = "introduce";
+    get_header();?>  
+
+    <div class="container-fluid" style="margin-top: 50px;">
+          <div class="row-fluid">
+              <div class="span12">
+                  <div class="tabbable tabs-left">
+                      <ul class="nav nav-tabs" style="padding-top: 30px; padding-bottom:  30px">
+                        <li class="active"><a href="#tabintroduce" data-toggle="tab"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">&nbsp;&nbsp;实验室简介</font></a></li>                        
+                        <li ><a href="#tabcommittee" data-toggle="tab"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">&nbsp;&nbsp;学术委员会</font></a></li>
+                      </ul>                                     
+                    <div class="tab-content" style="padding-left: 35px;">   
+                        <?php $tabs = array( 'introduce','committee');                        
+                         foreach ($tabs as $tab_index) {?>
+                          <div class="tab-pane <?php if($tab == $tab_index) echo "active"?>" id="tab<?php echo $tab_index ?>">
+                            <div class="container" style="width: 100%">                                                                                          
+                              <?php  
+                                    global $wpdb;
+                                    $post_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name= '$tab_index'");
+                                        echo get_post($post_id)->post_content; ?>                                           
+                                                    </div>
+                                                </div>
+                      <?php }?>
+
+                        
+                  
+                 
+                      
+
+               
+              </div>
+              </div>
         </div>
-    </div>
-    
-</body>
-</html>
+              <br/>
+              <br/>
+<?php get_footer(); ?>

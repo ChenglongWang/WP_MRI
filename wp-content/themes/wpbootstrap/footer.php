@@ -5,11 +5,11 @@
     <font color="grey">
     <div style=" height: 100%; margin-left: 10%; margin-right: 10%">
         <div class ="lab-address" style="width: 40%; padding-top: 5px;">
-            <h5>上海市磁共振重点实验室</h5>
+            <h5>上海市磁共振重点实验�/h5>
             <p>
-                上海市中山北路3663号华东师范大学 &nbsp  200062
+                上海市中山北�663号华东师范大�&nbsp  200062
                 <br/>
-                电话：021-62233873
+                电话�21-62233873
             </p>
         </div>
         <div class ="bottomlinks" style="  width: 30%; ">

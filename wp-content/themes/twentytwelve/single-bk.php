@@ -6,7 +6,6 @@
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
-
 get_header(); ?>
 
 	<div id="primary" class="site-content">
@@ -14,7 +13,7 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', get_post_format() ); ?>
+				<?php get_template_part( 'content-committee', get_post_format() ); ?>
 
 				<nav class="nav-single">
 					<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentytwelve' ); ?></h3>

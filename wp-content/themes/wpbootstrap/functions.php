@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
  include("wp-bootstrap-walker-class.php");
 
 function wpbootstrap_scripts_with_jquery()
@@ -65,6 +65,20 @@ function my_login_redirect( $redirect_to, $request, $user ){
        }
     }
 }
+function get_content_first_image($content){
+	if ( $content === false ) $content = get_the_content(); 
+
+	preg_match_all('|<img.*?src=[\'"](.*?)[\'"].*?>|i', $content, $images);
+
+	if($images){       
+		return $images[1][0];
+	}else{
+		return false;
+	}
+}
+
+
+
 
 //Written by wcl.
 function echo_collapse( $posts, $accordionID ){
@@ -96,13 +110,35 @@ function echo_pagination($cpage, $cat, $totalPages){
     ?>
         <ul class = "pager" style="text-align: left; margin-left: 200px; margin-top: 100px;">
         <li class = "<?php if($cpage==1) echo "disabled" ?>">
-            <a href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage>1)? ($cpage-1) : 1; ?>&cat=<?php echo $cat?>"><i class = "icon-hand-left"></i> Previous
-            </a></li>
+            <a 
+                <?php if($cpage>1) {?>
+                href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage-1) ?>&cat=<?php echo $cat?>"
+                <?php } ?>>
+                <i class = "icon-hand-left"></i> Previous
+            </a>
+        </li>
+        <span class="badge badge-info"><?php echo $cpage?></span>
         <li class = "<?php if($cpage==$totalPages) echo "disabled" ?>">
-            <a href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage+1)?>&cat=<?php echo $cat?>">Next <i class = "icon-hand-right"></i>
+            <a 
+                <?php if($cpage < $totalPages) {?> 
+                    href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage+1)?>&cat=<?php echo $cat?>"
+                <?php } ?>>
+                Next <i class = "icon-hand-right"></i>
             </a></li>
         </ul>
 <?php }
+
+function split_content() {
+        global $more;
+        $more = true;
+        echo $post->content;
+        $content = preg_split('/<span id="more-\d+"><\/span>/i', get_the_content('more'));
+        for($c = 0, $csize = count($content); $c < $csize; $c++) {
+                $content[$c] = apply_filters('the_content', $content[$c]);
+        }
+        return $content;
+}
+
 
 //function new_excerpt_more( $more ) {
 //	return ' <a class="read-more pull-right" href="'. get_permalink( get_the_ID() ) . '"><br><br>更多</a>';}
@@ -110,6 +146,7 @@ function echo_pagination($cpage, $cat, $totalPages){
 //function custom_excerpt_length( $length ) {
 //	return 300;}
 
+//Limit excerpt length.
 function improved_trim_excerpt($text) {
         global $post;
         if ( '' == $text ) {
