@@ -97,8 +97,8 @@ Tags: responsive, white, bootstrap
      .sec-header
      {
          border-bottom:rgb(215,215,215) 1px solid;
-         height:44px;
-         line-height:44px;
+         height:35px;
+         line-height:35px;
          margin-bottom:15px;
          margin-top:10px;
      }
@@ -107,7 +107,8 @@ Tags: responsive, white, bootstrap
          width:350px;
          height:210px;
          position:relative;
-         font-size:20px;
+         font-size:15px;
+         font-family: 'Microsoft Yahei';
      }
      .sec-articles-wrap .btn
      {

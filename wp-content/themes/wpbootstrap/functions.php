@@ -35,7 +35,7 @@ function dr_email_login_authenticate( $user, $username, $password ) {
 remove_filter( 'authenticate', 'wp_authenticate_username_password', 20, 3 );
 add_filter( 'authenticate', 'dr_email_login_authenticate', 20, 3 );
  
-//替换“用户名”为“用户名 / 邮箱�
+//替换“用户名”为“用户名 / 邮箱�
 function username_or_email_login() {
 	if ( 'wp-login.php' != basename( $_SERVER['SCRIPT_NAME'] ) )
 		return;
@@ -53,12 +53,12 @@ function username_or_email_login() {
 function my_login_redirect( $redirect_to, $request, $user ){
     //验证用户
     if( is_array( $user->roles ) ) {
-       //验证超级管理�
+       //验证超级管理�
        if( in_array( "administrator", $user->roles)){
-           // 如果的超级管理员则返回后台管理主�
+           // 如果的超级管理员则返回后台管理主�
            return home_url( '/wp-admin/' );
        } else {
-           //否则跳转以网站首�
+           //否则跳转以网站首�
 //         return home_url();
            //否则跳转返回至之前的页面
            return $_SERVER["HTTP_REFERER"];

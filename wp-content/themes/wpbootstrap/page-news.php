@@ -16,7 +16,7 @@ get_header();
 					<li>
 						<a href="#tabannounce" data-toggle="tab"><i class="icon-th-list"></i> 公告</a>
 					</li>
-                                        <li>
+                                        <!--<li>-->
 						<a href="#tabindustry" data-toggle="tab"><i class="icon-th-list"></i> 动态</a>
 					</li>
 				</ul>

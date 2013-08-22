@@ -1,29 +1,38 @@
-<?php 
-$a=$_GET["id"];
-get_header();?>      
-    <div class="container-fluid">
+<?php   
+    $tab = $_GET["tab"];
+    if($tab == '') $tab = "introduce";
+    get_header();?>  
+
+    <div class="container-fluid" style="margin-top: 50px;">
           <div class="row-fluid">
-                <div class="span3 bs-docs-sidebar" style="margin-top: 20px">                   
-                    <ul class="nav nav-list bs-docs-sidenav">
-                        <li id="introduce"><a href="<?php esc_url(get_home_url())?>/introduce" target="labframe"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">实验室简介</font></a></li>
-                        <li id="teachers"><a href="<?php  esc_url(get_home_url())?>/teachers" target="labframe"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">师资队伍</font></a></li>
-                        <li id="committee"><a href="<?php   esc_url(get_home_url())?>/committee" target="labframe"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">学术委员会</font></a></li>
-                      </ul>
-                    </div>
-               <div class="span9" style="margin-top: 60px">
-              <div class="container" style="width: 100%">
+              <div class="span12">
+                  <div class="tabbable tabs-left">
+                      <ul class="nav nav-tabs" style="padding-top: 30px; padding-bottom:  30px">
+                        <li class="active"><a href="#tabintroduce" data-toggle="tab"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">&nbsp;&nbsp;实验室简介</font></a></li>                        
+                        <li ><a href="#tabcommittee" data-toggle="tab"><i class="icon-chevron-right"></i><font color="#6a6a6b" face="微软雅黑">&nbsp;&nbsp;学术委员会</font></a></li>
+                      </ul>                                     
+                    <div class="tab-content" style="padding-left: 35px;">   
+                        <?php $tabs = array( 'introduce','committee');                        
+                         foreach ($tabs as $tab_index) {?>
+                          <div class="tab-pane <?php if($tab == $tab_index) echo "active"?>" id="tab<?php echo $tab_index ?>">
+                            <div class="container" style="width: 100%">                                                                                          
+                              <?php  
+                                    global $wpdb;
+                                    $post_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name= '$tab_index'");
+                                        echo get_post($post_id)->post_content; ?>                                           
+                                                    </div>
+                                                </div>
+                      <?php }?>
+
+                        
+                  
                  
                       
-                  <iframe src="<?php get_home_url()?>/<?php if($a == '1')                       
-                             echo 'introduce';
-                          elseif($a == '2')  
-                          echo 'teachers';
-                          else
-                         echo 'committee';
-                        ?>/" name="labframe" width="100%" height="1000px" marginwidth="0"  marginheight="0" align="center" scrolling="no" frameborder="0" id="labframe">                   
-                      
-                </iframe>
-           </div>                        
-        </div>
+
+               
               </div>
+              </div>
+        </div>
+              <br/>
+              <br/>
 <?php get_footer(); ?>
