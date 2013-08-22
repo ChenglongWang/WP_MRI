@@ -7,27 +7,27 @@ Version: 1.0
 Tags: responsive, white, bootstrap
 */
 
-@import url("../twentytwelve/style.css");
+/*@import url("../twentytwelve/style.css");*/
+@import url("../wpbootstrap/style.css");
 @import url('bootstrap/css/bootstrap.css');
 @import url('bootstrap/css/bootstrap-responsive.css');
 @import url('bootstrap/css/hint.css');
 
    body 
     {
-      padding-bottom: 10px;
-      color: #5a5a5a;
+        color: #5a5a5a;
     }
     .container-fluid 
     {
-    position:relative;
-    padding: 0;
-    height: 90px;
+        position:relative;
+        padding: 0;
+        height: 90px;
    }
     .navbar-fixed-top 
     {
-      position:relative;
-    margin-bottom: 0px;
-      margin-top:0px;  
+        position:relative;
+        margin-bottom: 0px;
+        margin-top:0px;  
   }
     .navbar-fixed-top .navbar-inner
     {
@@ -44,8 +44,8 @@ Tags: responsive, white, bootstrap
     }
     .myCarousel
     {
-      margin-top:0px;
-      background-color:snow;
+        margin-top:0px;
+        background-color:snow;
     }
     .slide
     {
@@ -53,13 +53,13 @@ Tags: responsive, white, bootstrap
     }
      .carousel-control 
      { 
-       height: 80px;
-       margin-top: 0;
-       font-size: 120px;
-       text-shadow: 0 1px 1px rgba(0,0,0,.4);
-       background-color: transparent;
-       border: 0;
-       z-index: 10;
+        height: 80px;
+        margin-top: 0;
+        font-size: 120px;
+        text-shadow: 0 1px 1px rgba(0,0,0,.4);
+        background-color: transparent;
+        border: 0;
+        z-index: 10;
      }
      .carousel-control.left
      {
@@ -129,36 +129,31 @@ Tags: responsive, white, bootstrap
     #footer
     {
         clear:both;
-        height:150px;
-        background-color:#dfe0c2;
+        background-color:transparent;
     }
     #footer .container
      {
          width:1170px;
-         height:150px;
+         height: 150px;
      }
     .lab-address
     {
-        padding-left:35px;
-        padding-top:20px;
         display:block;
         float:left;
-        width:530px;
     }
     .bottomlinks
     {
-        padding-right:200px;
-        padding-top:40px;
+        padding-right:200px;        
         display:block;
         float:right;
     }
 	p.ludou-error {
-  margin: 16px 0;
-  padding: 12px;
-  background-color: #ffebe8;
-  border: 1px solid #c00;
-  font-size: 12px;
-  line-height: 1.4em;
+        margin: 16px;
+        padding: 12px;
+        background-color: #ffebe8;
+        border: 1px solid #c00;
+        font-size: 12px;
+        line-height: 1.4em;
 }
 .ludou-reg label {
   color: #777;

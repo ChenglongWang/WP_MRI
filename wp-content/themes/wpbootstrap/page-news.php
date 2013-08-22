@@ -52,7 +52,7 @@ get_header();
 		</div>
 	</div>
 </div>
-    
+ </div>   
 <script>
     function dyniframesize(iframename) {
 

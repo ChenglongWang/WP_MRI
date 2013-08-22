@@ -78,6 +78,25 @@ Dropdown list on mouse hover
     top: 11px;
     left: -6px;
 }
+
+label.screen-reader-text {
+    font-size: 12px;
+}
+
+h3.widget-title {
+    font-size: 14px;
+    border-bottom: 2px #ddd solid;
+    padding-left: 2px;
+    border-left: 2px #ddd solid;
+}
+
+time.entry-date {
+    color: black;
+}
+
+div.lab-address {
+    margin: 0px;
+}
 /*
 Dropdown list on mouse hover Ending!
 */
