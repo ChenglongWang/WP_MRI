@@ -35,7 +35,7 @@ function dr_email_login_authenticate( $user, $username, $password ) {
 remove_filter( 'authenticate', 'wp_authenticate_username_password', 20, 3 );
 add_filter( 'authenticate', 'dr_email_login_authenticate', 20, 3 );
  
-//替换“用户名”为“用户名 / 邮箱�
+//替换“用户名”为“用户名 / 邮箱”
 function username_or_email_login() {
 	if ( 'wp-login.php' != basename( $_SERVER['SCRIPT_NAME'] ) )
 		return;
@@ -43,7 +43,7 @@ function username_or_email_login() {
 	?><script type="text/javascript">
 	// Form Label
 	if ( document.getElementById('loginform') )
-		document.getElementById('loginform').childNodes[1].childNodes[1].childNodes[0].nodeValue = '<?php echo esc_js( __( '用户/邮箱', 'email-login' ) ); ?>';
+		document.getElementById('loginform').childNodes[1].childNodes[1].childNodes[0].nodeValue = '<?php echo esc_js( __( '用户名/邮箱', 'email-login' ) ); ?>';
  
 	// Error Messages
 	if ( document.getElementById('login_error') )
@@ -53,12 +53,12 @@ function username_or_email_login() {
 function my_login_redirect( $redirect_to, $request, $user ){
     //验证用户
     if( is_array( $user->roles ) ) {
-       //验证超级管理�
+       //验证超级管理员
        if( in_array( "administrator", $user->roles)){
-           // 如果的超级管理员则返回后台管理主�
+           // 如果的超级管理员则返回后台管理主页
            return home_url( '/wp-admin/' );
        } else {
-           //否则跳转以网站首�
+           //否则跳转以网站首页
 //         return home_url();
            //否则跳转返回至之前的页面
            return $_SERVER["HTTP_REFERER"];
@@ -110,13 +110,35 @@ function echo_pagination($cpage, $cat, $totalPages){
     ?>
         <ul class = "pager" style="text-align: left; margin-left: 200px; margin-top: 100px;">
         <li class = "<?php if($cpage==1) echo "disabled" ?>">
-            <a href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage>1)? ($cpage-1) : 1; ?>&cat=<?php echo $cat?>"><i class = "icon-hand-left"></i> Previous
-            </a></li>
+            <a 
+                <?php if($cpage>1) {?>
+                href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage-1) ?>&cat=<?php echo $cat?>"
+                <?php } ?>>
+                <i class = "icon-hand-left"></i> Previous
+            </a>
+        </li>
+        <span class="badge badge-info"><?php echo $cpage?></span>
         <li class = "<?php if($cpage==$totalPages) echo "disabled" ?>">
-            <a href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage+1)?>&cat=<?php echo $cat?>">Next <i class = "icon-hand-right"></i>
+            <a 
+                <?php if($cpage < $totalPages) {?> 
+                    href = "<?php echo esc_url(get_home_url())?>/news-list/?cpage=<?php echo ($cpage+1)?>&cat=<?php echo $cat?>"
+                <?php } ?>>
+                Next <i class = "icon-hand-right"></i>
             </a></li>
         </ul>
 <?php }
+
+function split_content() {
+        global $more;
+        $more = true;
+        echo $post->content;
+        $content = preg_split('/<span id="more-\d+"><\/span>/i', get_the_content('more'));
+        for($c = 0, $csize = count($content); $c < $csize; $c++) {
+                $content[$c] = apply_filters('the_content', $content[$c]);
+        }
+        return $content;
+}
+
 
 //function new_excerpt_more( $more ) {
 //	return ' <a class="read-more pull-right" href="'. get_permalink( get_the_ID() ) . '"><br><br>更多</a>';}
@@ -124,6 +146,7 @@ function echo_pagination($cpage, $cat, $totalPages){
 //function custom_excerpt_length( $length ) {
 //	return 300;}
 
+//Limit excerpt length.
 function improved_trim_excerpt($text) {
         global $post;
         if ( '' == $text ) {

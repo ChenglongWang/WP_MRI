@@ -43,7 +43,7 @@
 </blockquote>
 
 <h2 class="subtitle">
-        科研成果
+        科研进展
 </h2>
     <div class="image_grid portfolio_4col">
     <ul style="height: 495px; margin-left: 0px" class="da-thumbs">
@@ -75,7 +75,6 @@ $(document).ready(function(){
         //Image Hover
 	$('ul.da-thumbs > li').hoverdir();
     });
-
 });
 </script>
 </body>

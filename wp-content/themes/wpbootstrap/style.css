@@ -84,7 +84,7 @@ Dropdown list on mouse hover Ending!
 
 
 /* Sidenav for Docs
--------------------------------------------------- */
+-------------------------------------------------- 
 .bs-docs-sidenav {
   width: 228px;
   margin: 30px 0 0;
@@ -124,7 +124,7 @@ Dropdown list on mouse hover Ending!
      -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
           box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
 }
-/* Chevrons */
+
 .bs-docs-sidenav .icon-chevron-right {
   float: right;
   margin-top: 2px;
@@ -150,3 +150,4 @@ Dropdown list on mouse hover Ending!
   top: auto;
   bottom: 270px;
 }
+*/
