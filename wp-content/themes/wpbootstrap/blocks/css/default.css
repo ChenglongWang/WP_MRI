@@ -1,0 +1,57 @@
+/* ------ general
+-----------------------------------------------*/
+
+body {
+font-family:Arial, Helvetica, sans-serif;
+background:#999;
+}
+
+/* ------ mobilyblocks
+-----------------------------------------------*/
+.nature {
+display:block;
+width:150px;
+height:150px;
+background:url(/wpc/wp-content/uploads/img/img12.png) no-repeat;
+cursor:pointer;
+position:absolute;
+}
+
+/*.socials, .nature {
+margin:0 auto;
+}*/
+
+/*.socials {
+margin-bottom:50px;
+}*/
+
+ul.reset,
+ul.reset li {
+display:block;
+list-style:none;
+padding:0;
+margin:0;
+}
+
+ul.reset li {
+position:absolute;
+}
+
+ul.reset li a {
+outline:none;
+}
+
+#content {
+margin:100px auto 0;
+width:560px;
+}
+
+
+a {
+color:#FF9900;
+}
+
+a img {
+border:none;
+}
+

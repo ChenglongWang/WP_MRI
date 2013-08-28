@@ -207,6 +207,7 @@
   }
   .row-fluid {
     width: 100%;
+    min-height:600px;
     *zoom: 1;
   }
   .row-fluid:before,

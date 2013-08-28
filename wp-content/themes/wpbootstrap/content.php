@@ -7,7 +7,7 @@
  * @since Twenty Twelve 1.0
  */
 ?>
-
+<?php //get_header(); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
 		<div class="featured-post">
@@ -58,3 +58,5 @@
 			<?php endif; ?>
 		</footer><!-- .entry-meta -->
 	</article><!-- #post -->
+<?php //get_sidebar(); ?>
+<?php //get_footer(); ?>

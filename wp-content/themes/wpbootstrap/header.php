@@ -15,12 +15,14 @@
         <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
         <?php } ?>
         <link href="/wpc/wp-content/themes/wpbootstrap/bootstrap/bxslider/jquery.bxslider.css" rel="stylesheet">
+        <script src="/wpc/wp-content/themes/wpbootstrap/bootstrap/js/jquery.js"></script>
+        
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-	<?php wp_enqueue_script("jquery"); ?>
+	<?php //wp_enqueue_script("jquery"); ?>
 	<?php wp_head(); ?>
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="../assets/ico/favicon.ico">
